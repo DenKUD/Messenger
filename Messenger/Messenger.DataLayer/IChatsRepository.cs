@@ -10,6 +10,7 @@ namespace Messenger.DataLayer
     public interface IChatsRepository
     {
         Chat Create(IEnumerable<Guid> members, string name);
+        Chat Get(Guid chatId);
         IEnumerable<Chat> GetUserChats(Guid userId);
         void DeleteChat(Guid chatId);
 

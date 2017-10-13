@@ -67,7 +67,7 @@ namespace Messenger.DataLayer.Sql
                 using (var command = connection.CreateCommand())
                 {
                     command.CommandText = "delete from Messenger.dbo.chatmembers where chat_id = @chatid";
-                    command.Parameters.AddWithValue("@id", chatId);
+                    command.Parameters.AddWithValue("@chatid", chatId);
                     command.ExecuteNonQuery();
                 }
             }
@@ -111,6 +111,29 @@ namespace Messenger.DataLayer.Sql
                                 Members = GetChatMembers(reader.GetGuid(reader.GetOrdinal("id")))
                             };
                         }
+                    }
+                }
+            }
+        }
+
+        public Chat Get(Guid chatId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "select * from Messenger.dbo.chats where id = @chatid";
+                    command.Parameters.AddWithValue("@chatid", chatId);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                            throw new ArgumentException($"Чата с id {chatId} не существует");
+                        return new Chat
+                        {
+                            Id = reader.GetGuid(reader.GetOrdinal("id")),
+                            Name = reader.GetString(reader.GetOrdinal("name"))
+                        };
                     }
                 }
             }

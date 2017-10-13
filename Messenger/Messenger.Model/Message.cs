@@ -10,6 +10,7 @@ namespace Messenger.Model
     {
         public Guid Id { set; get; }
         public User User { set; get; }
+        public Chat Chat { set; get; }
         public string Text { set; get; }
         public DateTime dtime { set; get; }
         public byte[] Body { get; set; }
