@@ -33,7 +33,7 @@ namespace Messenger.DataLayer.Sql
                     if (message.Body != null)
                     {
                         using (var command = connection.CreateCommand())
-                        {
+                        {//Inserting attach
                             command.Transaction = transaction;
                             command.CommandText = "insert into Messenger.dbo.Attaches (Id, Content) values (@id, @Content)";
 
@@ -43,7 +43,7 @@ namespace Messenger.DataLayer.Sql
                             command.ExecuteNonQuery();
                         }
                         using (var command = connection.CreateCommand())
-                        {
+                        {//Inserting Message
                             command.Transaction = transaction;
                             command.CommandText = "insert into Messenger.dbo.Messages (Id, Chat_id, User_id, Datetime, text, SelfDestructable, isRead, Attach_id) " +
                                 "values (@id, @Chat_id, @User_id, @Datetime, @text, @SelfDestructable, @isRead, @Attach_id)";
@@ -62,7 +62,8 @@ namespace Messenger.DataLayer.Sql
                     }
                     else
                         using (var command = connection.CreateCommand())
-                        {
+                        {/*If Attach does not exsist Insert only message in Messenger.dbo.Messages
+                           SQL query differs (No attach_id) */
                             command.Transaction = transaction;
                             command.CommandText = "insert into Messenger.dbo.Messages (Id, Chat_id, User_id, Datetime, text, SelfDestructable, isRead) " +
                                 "values (@id, @Chat_id, @User_id, @Datetime, @text, @SelfDestructable, @isRead)";
@@ -142,6 +143,7 @@ namespace Messenger.DataLayer.Sql
                             User = _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("User_id"))),
                             Chat = _chatsRepository.Get(reader.GetGuid(reader.GetOrdinal("chat_id"))),
                             dtime = reader.GetDateTime(reader.GetOrdinal("Datetime")),
+                            Text= reader.GetString(reader.GetOrdinal("Text")),
                             SelfDestroy = reader.GetBoolean(reader.GetOrdinal("SelfDestructable")),
                             IsRead = reader.GetBoolean(reader.GetOrdinal("isRead"))
                         };
