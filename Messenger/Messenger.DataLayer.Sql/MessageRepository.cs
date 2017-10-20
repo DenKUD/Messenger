@@ -35,7 +35,7 @@ namespace Messenger.DataLayer.Sql
                         using (var command = connection.CreateCommand())
                         {//Inserting attach
                             command.Transaction = transaction;
-                            command.CommandText = "insert into Messenger.dbo.Attaches (Id, Content) values (@id, @Content)";
+                            command.CommandText = "insert into Attaches (Id, Content) values (@id, @Content)";
 
                             command.Parameters.AddWithValue("@Id", attach_id);
                             command.Parameters.AddWithValue("@Content", message.Body);
@@ -45,7 +45,7 @@ namespace Messenger.DataLayer.Sql
                         using (var command = connection.CreateCommand())
                         {//Inserting Message
                             command.Transaction = transaction;
-                            command.CommandText = "insert into Messenger.dbo.Messages (Id, Chat_id, User_id, Datetime, text, SelfDestructable, isRead, Attach_id) " +
+                            command.CommandText = "insert into Messages (Id, Chat_id, User_id, Datetime, text, SelfDestructable, isRead, Attach_id) " +
                                 "values (@id, @Chat_id, @User_id, @Datetime, @text, @SelfDestructable, @isRead, @Attach_id)";
                             message.Id = Guid.NewGuid();
 
@@ -65,7 +65,7 @@ namespace Messenger.DataLayer.Sql
                         {/*If Attach does not exsist Insert only message in Messenger.dbo.Messages
                            SQL query differs (No attach_id) */
                             command.Transaction = transaction;
-                            command.CommandText = "insert into Messenger.dbo.Messages (Id, Chat_id, User_id, Datetime, text, SelfDestructable, isRead) " +
+                            command.CommandText = "insert into Messages (Id, Chat_id, User_id, Datetime, text, SelfDestructable, isRead) " +
                                 "values (@id, @Chat_id, @User_id, @Datetime, @text, @SelfDestructable, @isRead)";
                             message.Id = Guid.NewGuid();
 
@@ -94,7 +94,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "delete from Messenger.dbo.messages where Id = @id";
+                    command.CommandText = "delete from messages where Id = @id";
                     command.Parameters.AddWithValue("@id", messageId);
                     command.ExecuteNonQuery();
                 }
@@ -111,7 +111,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select Id from Messenger.dbo.messages where chat_id = @chatid";
+                    command.CommandText = "select Id from messages where chat_id = @chatid";
                     command.Parameters.AddWithValue("@chatid", chatId);
                     using (var reader = command.ExecuteReader())
                     {
@@ -131,7 +131,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select * from Messenger.dbo.messages where id = @messageid";
+                    command.CommandText = "select top(1) * from messages where id = @messageid";
                     command.Parameters.AddWithValue("@messageid", messageId);
                     using (var reader = command.ExecuteReader())
                     {
@@ -164,7 +164,7 @@ namespace Messenger.DataLayer.Sql
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = "select Content from Messenger.dbo.attaches where id = @id";
+                        command.CommandText = "select Content from attaches where id = @id";
                         command.Parameters.AddWithValue("@id", attachId);
                         using (var reader = command.ExecuteReader())
                         {
@@ -175,6 +175,75 @@ namespace Messenger.DataLayer.Sql
                     }
                 }
             return gotMessage;  
+        }
+
+        public Message Update(Guid messageId, Message newMessage)
+        {
+            Guid attach_id;
+            using (var connection = new SqlConnection(_connectionString))
+            {
+
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "select top(1) attach_id from messages where id = @messageid";
+                    command.Parameters.AddWithValue("@messageid", messageId);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (!reader.Read())
+                            throw new ArgumentException($"Сообщение с id {messageId} не найдено");
+
+                        try //if attach_id is not null get attach_id
+                        {
+                            attach_id = reader.GetGuid(reader.GetOrdinal("attach_id"));
+                        }
+                        catch (System.Data.SqlTypes.SqlNullValueException)
+                        {// if it is there is no attach. set attachId=Guid.Empty 
+                            attach_id = Guid.Empty;
+                        }
+                    }
+                }
+                using (var transaction = connection.BeginTransaction())
+                {//Attach should be updated first if it exist
+                    if (newMessage.Body != null)
+                    {
+                        using (var command = connection.CreateCommand())
+                        {//Inserting attach
+                            command.Transaction = transaction;
+                            command.CommandText = "update Attaches SET Content=@Content Where Id=@id";
+                            command.Parameters.AddWithValue("@Content", newMessage.Body);
+                            command.Parameters.AddWithValue("@id", attach_id);
+                            command.ExecuteNonQuery();
+                        }
+                        using (var command = connection.CreateCommand())
+                        {//updating Message
+                            command.Transaction = transaction;
+                            command.CommandText = "Update Messages SET text=@text, isRead=@IsRead, Attach_id=@Attach_id " +
+                                "where Id=@id";
+
+                            command.Parameters.AddWithValue("@text", newMessage.Text);
+                            command.Parameters.AddWithValue("@isRead", newMessage.IsRead);
+                            command.Parameters.AddWithValue("@Attach_id", attach_id);
+                            command.Parameters.AddWithValue("@id", messageId);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                        using (var command = connection.CreateCommand())
+                        {//updating Message
+                            command.Transaction = transaction;
+                            command.CommandText = "Update Messages SET text=@text, isRead=@IsRead " +
+                                "where Id=@id";
+
+                            command.Parameters.AddWithValue("@text", newMessage.Text);
+                            command.Parameters.AddWithValue("@isRead", newMessage.IsRead);
+                            command.Parameters.AddWithValue("@id", messageId);
+                            command.ExecuteNonQuery();
+                        }
+                    transaction.Commit();
+                    return newMessage;
+                }
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Messenger.DataLayer.Sql
                     using (var command = connection.CreateCommand())
                     {
                         command.Transaction = transaction;
-                        command.CommandText = "insert into Messenger.dbo.Chats (Id, Name) values (@id, @name)";
+                        command.CommandText = "insert into Chats (Id, Name) values (@id, @name)";
                         command.Parameters.AddWithValue("@id", chat.Id);
                         command.Parameters.AddWithValue("@name", chat.Name);
 
@@ -46,7 +46,7 @@ namespace Messenger.DataLayer.Sql
                         using (var command = connection.CreateCommand())
                         {
                             command.Transaction = transaction;
-                            command.CommandText = "insert into Messenger.dbo.chatmembers (chat_id, user_id) values (@chat_id, @user_id)";
+                            command.CommandText = "insert into chatmembers (chat_id, user_id) values (@chat_id, @user_id)";
                             command.Parameters.AddWithValue("@chat_id", chat.Id);
                             command.Parameters.AddWithValue("@user_id", userId);
                             command.ExecuteNonQuery();
@@ -66,7 +66,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "delete from Messenger.dbo.chatmembers where chat_id = @chatid";
+                    command.CommandText = "delete from chatmembers where chat_id = @chatid";
                     command.Parameters.AddWithValue("@chatid", chatId);
                     command.ExecuteNonQuery();
                 }
@@ -80,12 +80,12 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select user_id from Messenger.dbo.chatmembers where chat_id = @chatid";
+                    command.CommandText = "select user_id from chatmembers where chat_id = @chatid";
                     command.Parameters.AddWithValue("@chatid", id);
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
-                            yield return _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("userid")));
+                            yield return _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("user_id")));
                     }
                 }
             }
@@ -97,8 +97,8 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select id, name from Messenger.dbo.chatmembers " +
-                        "inner join Messenger.dbo.chats on Messenger.dbo.chatmembers.chat_id = chats.id where user_id = @userid";
+                    command.CommandText = "select id, name from chatmembers " +
+                        "inner join chats on chatmembers.chat_id = chats.id where user_id = @userid";
                     command.Parameters.AddWithValue("@userid", userId);
                     using (var reader = command.ExecuteReader())
                     {
@@ -118,23 +118,58 @@ namespace Messenger.DataLayer.Sql
 
         public Chat Get(Guid chatId)
         {
+            var chatMembers = GetChatMembers(chatId);
+            Chat chat = new Chat { Members = chatMembers };
             using (var connection = new SqlConnection(_connectionString))
             {
+                
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select * from Messenger.dbo.chats where id = @chatid";
+                    command.CommandText = "select * from chats where id = @chatid";
                     command.Parameters.AddWithValue("@chatid", chatId);
                     using (var reader = command.ExecuteReader())
                     {
                         if (!reader.Read())
                             throw new ArgumentException($"Чата с id {chatId} не существует");
-                        return new Chat
-                        {
-                            Id = reader.GetGuid(reader.GetOrdinal("id")),
-                            Name = reader.GetString(reader.GetOrdinal("name"))
-                        };
+
+                        chat.Id = reader.GetGuid(reader.GetOrdinal("id"));
+                        chat.Name = reader.GetString(reader.GetOrdinal("name"));
+                        
                     }
+                }
+            }
+            return chat;
+        }
+
+        public void AddUser(Guid chatId, Guid userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                            
+                    command.CommandText = "insert into chatmembers (chat_id, user_id) values (@chat_id, @user_id)";
+                    command.Parameters.AddWithValue("@chat_id", chatId);
+                    command.Parameters.AddWithValue("@user_id", userId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteUser(Guid chatId, Guid userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+
+                    command.CommandText = "delete from chatmembers  where chat_id=@chat_id AND user_id=@user_id";
+                    command.Parameters.AddWithValue("@chat_id", chatId);
+                    command.Parameters.AddWithValue("@user_id", userId);
+                    command.ExecuteNonQuery();
                 }
             }
         }

@@ -10,7 +10,7 @@ namespace Messenger.DataLayer.Sql.Tests
     [TestClass]
     public class UserRepositoryTest
     {
-        private const string ConnectionString = @"Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+        private const string ConnectionString = @"Server=localhost\SQLEXPRESS; Initial Catalog=Messenger;Trusted_Connection=True;";
 
         private readonly List<Guid> _tempUsers = new List<Guid>();
         private readonly List<Guid> _tempChats = new List<Guid>();
@@ -76,6 +76,41 @@ namespace Messenger.DataLayer.Sql.Tests
                 new UsersRepository(ConnectionString).Delete(id);
             foreach (var id in _tempChats)
                 new ChatsRepository(ConnectionString,new UsersRepository(ConnectionString)).DeleteChat(id);
+        }
+
+        [TestMethod]
+        public void shouldUpdateUser()
+        {
+            // arrange
+
+            var user = new User
+            {
+                Name = "testUser",
+                Userpic = Encoding.UTF8.GetBytes("ava"),
+                Password = "password",
+                Bio = "test"
+            };
+
+            //act
+            var repository = new UsersRepository(ConnectionString);
+            var result = repository.Create(user);
+
+            _tempUsers.Add(result.Id);
+
+            var newUser = new User
+            {
+                Name = "newtestUser",
+                Userpic = Encoding.UTF8.GetBytes("newava"),
+                Password = "newpassword",
+                Bio = "newtest"
+            };
+            repository.Update(result.Id, newUser);
+            var newResult = repository.Get(result.Id);
+            //asserts
+            Assert.AreEqual(newUser.Name, newResult.Name);
+            CollectionAssert.AreEqual(newUser.Userpic, newResult.Userpic);
+            Assert.AreEqual(newUser.Password, newResult.Password);
+            Assert.AreEqual(newUser.Bio, newResult.Bio);
         }
     }
     

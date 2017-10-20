@@ -24,7 +24,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "insert into Messenger.dbo.Users (id, username, password, user_pic, bio) values (@id, @name, @password, @pic, @bio)";
+                    command.CommandText = "insert into Users (id, username, password, user_pic, bio) values (@id, @name, @password, @pic, @bio)";
                     user.Id = Guid.NewGuid();
                     command.Parameters.AddWithValue("@id", user.Id);
                     command.Parameters.AddWithValue("@name", user.Name);
@@ -45,7 +45,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "delete from Messenger.dbo.users where id = @id";
+                    command.CommandText = "delete from users where id = @id";
                     command.Parameters.AddWithValue("@id", id);
                     command.ExecuteNonQuery();
                 }
@@ -59,7 +59,7 @@ namespace Messenger.DataLayer.Sql
                 connection.Open();
                 using (var command = connection.CreateCommand())
                 {
-                    command.CommandText = "select top(1) id, username, password, user_pic, bio  from Messenger.dbo.users where id = @id";
+                    command.CommandText = "select top(1) id, username, password, user_pic, bio  from users where id = @id";
                     command.Parameters.AddWithValue("@id", id);
                     using (var reader = command.ExecuteReader())
                     {
@@ -74,6 +74,29 @@ namespace Messenger.DataLayer.Sql
                             Bio= reader.GetString(reader.GetOrdinal("bio"))
                         };
                     }
+                }
+            }
+        }
+
+        public User Update(Guid id, User newUser)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                var user = new User { };
+                user = newUser;
+                user.Id = id;
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "Update Users  set username=@name, password=@password, user_pic=@pic, bio=@bio Where id=@id";
+                    command.Parameters.AddWithValue("@id", user.Id);
+                    command.Parameters.AddWithValue("@name", user.Name);
+                    command.Parameters.AddWithValue("@pic", user.Userpic);
+                    command.Parameters.AddWithValue("@password", user.Password);
+                    command.Parameters.AddWithValue("@bio", user.Bio);
+
+                    command.ExecuteNonQuery();
+                    return user;
                 }
             }
         }

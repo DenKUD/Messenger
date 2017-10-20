@@ -12,5 +12,6 @@ namespace Messenger.DataLayer
         User Create(User user);
         void Delete(Guid id);
         User Get(Guid id);
+        User Update(Guid id, User newUser);
     };
 }

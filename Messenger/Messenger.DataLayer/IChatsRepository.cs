@@ -13,6 +13,8 @@ namespace Messenger.DataLayer
         Chat Get(Guid chatId);
         IEnumerable<Chat> GetUserChats(Guid userId);
         void DeleteChat(Guid chatId);
+        void AddUser(Guid chatId, Guid userId);
+        void DeleteUser(Guid chatId, Guid userId);
 
     }
 }
