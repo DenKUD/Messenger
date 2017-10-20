@@ -77,10 +77,10 @@ namespace Messenger.Api.Controllers
         /// <param name="newmember">New member id</param>
         /// <param name="id"> Chat id</param>
         [HttpPut]
-        [Route("api/chats/{id}/{newMember}")]
-        public void AddUser(Guid newmember,Guid id)
+        [Route("api/chats/{id}/{newMember_id}")]
+        public void AddUser(Guid newmember_id,Guid id)
         {
-             _ChatsRepository.AddUser(id,newmember);
+             _ChatsRepository.AddUser(id,newmember_id);
         }
 
         /// <summary>

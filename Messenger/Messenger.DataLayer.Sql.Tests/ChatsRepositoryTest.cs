@@ -76,7 +76,6 @@ namespace Messenger.DataLayer.Sql.Tests
             
             Assert.AreEqual(chat.Name, gotChat.Name);
             Assert.AreEqual(chat.Id, gotChat.Id);
-           
             CollectionAssert.Equals(chat.Members,gotChat.Members);
             
         }

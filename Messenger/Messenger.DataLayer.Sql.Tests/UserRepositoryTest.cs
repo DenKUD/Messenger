@@ -68,16 +68,6 @@ namespace Messenger.DataLayer.Sql.Tests
             Assert.AreEqual(user.Bio, gotUser.Bio);
         }
 
-        
-        [TestCleanup]
-        public void Clean()
-        {
-            foreach (var id in _tempUsers)
-                new UsersRepository(ConnectionString).Delete(id);
-            foreach (var id in _tempChats)
-                new ChatsRepository(ConnectionString,new UsersRepository(ConnectionString)).DeleteChat(id);
-        }
-
         [TestMethod]
         public void shouldUpdateUser()
         {
@@ -112,6 +102,44 @@ namespace Messenger.DataLayer.Sql.Tests
             Assert.AreEqual(newUser.Password, newResult.Password);
             Assert.AreEqual(newUser.Bio, newResult.Bio);
         }
+
+        [TestMethod]
+        public void shouldfindUserByName()
+        {
+            // arrange
+
+            var user = new User
+            {
+                Name = "UniqueUser",
+                Userpic = Encoding.UTF8.GetBytes("ava"),
+                Password = "password",
+                Bio = "test"
+            };
+
+            //act
+            var repository = new UsersRepository(ConnectionString);
+            var resultUser = repository.Create(user);
+
+            _tempUsers.Add(resultUser.Id);
+
+            
+           
+            var foundUser = repository.FindUserIdByName(resultUser.Name);
+            //asserts
+            Assert.AreEqual(resultUser.Id, foundUser.Single());
+            
+        }
+
+        [TestCleanup]
+        public void Clean()
+        {
+            foreach (var id in _tempUsers)
+                new UsersRepository(ConnectionString).Delete(id);
+            foreach (var id in _tempChats)
+                new ChatsRepository(ConnectionString,new UsersRepository(ConnectionString)).DeleteChat(id);
+        }
+
+        
     }
     
 }

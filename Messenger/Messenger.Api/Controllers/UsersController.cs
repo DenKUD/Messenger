@@ -33,6 +33,18 @@ namespace Messenger.Api.Controllers
         }
 
         /// <summary>
+        /// Gets User id by username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/users/username/{username}")]
+        public IEnumerable<Guid> GetUserIdByName(string username)
+        {
+            return _usersRepository.FindUserIdByName(username);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="user"></param>

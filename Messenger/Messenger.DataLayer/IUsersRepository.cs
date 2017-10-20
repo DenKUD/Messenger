@@ -13,5 +13,6 @@ namespace Messenger.DataLayer
         void Delete(Guid id);
         User Get(Guid id);
         User Update(Guid id, User newUser);
+        IEnumerable<Guid> FindUserIdByName(string name);
     };
 }

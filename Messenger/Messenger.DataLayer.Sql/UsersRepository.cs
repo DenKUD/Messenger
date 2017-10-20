@@ -52,6 +52,24 @@ namespace Messenger.DataLayer.Sql
             }
         }
 
+        public IEnumerable<Guid> FindUserIdByName(string name)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "select  id from users where username = @name";
+                    command.Parameters.AddWithValue("@name", name);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                            yield return reader.GetGuid(reader.GetOrdinal("id"));
+                    }
+                }
+            }
+        }
+
         public User Get(Guid id)
         {
             using (var connection = new SqlConnection(_connectionString))
