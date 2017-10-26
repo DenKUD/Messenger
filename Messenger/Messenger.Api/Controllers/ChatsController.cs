@@ -7,19 +7,23 @@ using System.Web.Http;
 using Messenger.DataLayer;
 using Messenger.DataLayer.Sql;
 using Messenger.Model;
-
+using Messenger.Api.Filters;
+using NLog;
 namespace Messenger.Api.Controllers
 {
+    [ExpectedExceptionsFilter]
     public class ChatsController : ApiController
     {
         private readonly IUsersRepository _usersRepository;
         private readonly IChatsRepository _ChatsRepository;
         private const string ConnectionString = @"Server=localhost\SQLEXPRESS; Initial Catalog=Messenger;Trusted_Connection=True;";
+        private Logger logger;
 
         public ChatsController()
         {
             _usersRepository = new UsersRepository(ConnectionString);
             _ChatsRepository = new ChatsRepository(ConnectionString, _usersRepository);
+            logger = LogManager.GetCurrentClassLogger();
         }
 
         /// <summary>
@@ -56,7 +60,10 @@ namespace Messenger.Api.Controllers
         [Route("api/chats/{name}")]
         public Chat Create([FromBody] IEnumerable<Guid> members, string name)
         {
-            return _ChatsRepository.Create(members,name);
+            logger.Trace("Попытка создания чата с именем: {0}", name);
+            var result = _ChatsRepository.Create(members,name);
+            logger.Info("Создан чат с именем: {0} и id: {1}", result.Name, result.Id);
+            return result;
         }
 
         /// <summary>
@@ -67,7 +74,9 @@ namespace Messenger.Api.Controllers
         [Route("api/chats/{id}")]
         public void Delete(Guid id)
         {
+            logger.Trace("Попытка удаления чата с id: {0}", id);
             _ChatsRepository.DeleteChat(id);
+            logger.Info("Чат с id: {0} удален", id);
         }
 
         
@@ -80,7 +89,10 @@ namespace Messenger.Api.Controllers
         [Route("api/chats/{id}/{newMember_id}")]
         public void AddUser(Guid newmember_id,Guid id)
         {
-             _ChatsRepository.AddUser(id,newmember_id);
+            logger.Trace("Попытка добавления пользователя с id: {0} в чат с id: {1}", newmember_id, id);
+            _ChatsRepository.AddUser(id,newmember_id);
+            logger.Info("Пользовател с id: {0} добавлен в чат с id: {1}", newmember_id, id);
+
         }
 
         /// <summary>
@@ -92,7 +104,9 @@ namespace Messenger.Api.Controllers
         [Route("api/chats/{Chat_id}/{User_id}")]
         public void DeleteUser(Guid chat_id,  Guid user_id)
         {
+            logger.Trace("Попытка удаления пользователя с id: {0} из чата с id: {1}", user_id, chat_id);
             _ChatsRepository.DeleteUser(chat_id, user_id);
+            logger.Info("Пользователь с id: {0} удален из чата с id: {1}", user_id, chat_id);
         }
 
     }

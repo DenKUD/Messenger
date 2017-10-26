@@ -7,17 +7,22 @@ using System.Web.Http;
 using Messenger.DataLayer;
 using Messenger.DataLayer.Sql;
 using Messenger.Model;
+using NLog;
+using Messenger.Api.Filters;
 
 namespace Messenger.Api.Controllers
 {
+    [ExpectedExceptionsFilter]
     public class UsersController : ApiController
     {
+        private Logger logger;
         private readonly IUsersRepository _usersRepository;
         private const string ConnectionString = @"Server=localhost\SQLEXPRESS; Initial Catalog=Messenger;Trusted_Connection=True;";
 
         public UsersController()
         {
             _usersRepository = new UsersRepository(ConnectionString);
+            logger= LogManager.GetCurrentClassLogger();
         }
 
         /// <summary>
@@ -26,10 +31,14 @@ namespace Messenger.Api.Controllers
         /// <param name="id">User id</param>
         /// <returns></returns>
         [HttpGet]
+        
         [Route("api/users/{id}")]
         public User Get(Guid id)
         {
-            return _usersRepository.Get(id);
+            logger.Trace("Попытка получения user");
+            var result= _usersRepository.Get(id);
+            logger.Trace("Попытка получения user успешна");
+            return result;
         }
 
         /// <summary>
@@ -38,10 +47,14 @@ namespace Messenger.Api.Controllers
         /// <param name="username"></param>
         /// <returns></returns>
         [HttpGet]
+        [ExpectedExceptionsFilter]
         [Route("api/users/username/{username}")]
         public IEnumerable<Guid> GetUserIdByName(string username)
         {
-            return _usersRepository.FindUserIdByName(username);
+            logger.Trace("Попытка получения user_id по username");
+            var result= _usersRepository.FindUserIdByName(username);
+            logger.Trace("Попытка получения user_id по username успешна");
+            return result;
         }
 
         /// <summary>
@@ -53,7 +66,13 @@ namespace Messenger.Api.Controllers
         [Route("api/users")]
         public User Create([FromBody] User user)
         {
-            return _usersRepository.Create(user);
+            User result;
+            var logger = LogManager.GetCurrentClassLogger();
+            logger.Info("Создание пользователя");
+            result= _usersRepository.Create(user);
+            logger.Info("Создание пользователя завершено id ={0}",result.Id);
+            return result;
+
         }
 
         /// <summary>
@@ -64,7 +83,9 @@ namespace Messenger.Api.Controllers
         [Route("api/users/{id}")]
         public void Delete(Guid id)
         {
+            logger.Info("удаление пользователя c id={0}",id);
             _usersRepository.Delete(id);
+            logger.Info("пользователь c id={0} удален", id);
         }
 
         /// <summary>
@@ -77,7 +98,10 @@ namespace Messenger.Api.Controllers
         [Route("api/users/{id}")]
         public User Update(Guid id,[FromBody] User user)
         {
-            return _usersRepository.Update(id,user);
+            logger.Info("изменение данных пользователя c id={0}", id);
+            var result = _usersRepository.Update(id,user);
+            logger.Info("данныt пользователя c id={0} изменены", id);
+            return result;
         }
 
     }

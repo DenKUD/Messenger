@@ -54,9 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Messenger.DataLayer.Sql\Messenger.DataLayer.Sql.csproj">
       <Project>{2838bdc3-74ab-4b89-bbe4-31716b154102}</Project>
       <Name>Messenger.DataLayer.Sql</Name>
@@ -69,6 +66,9 @@
       <Project>{574a2240-f708-4813-99b6-38172917c8ca}</Project>
       <Name>Messenger.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
