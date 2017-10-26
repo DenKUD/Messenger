@@ -32,7 +32,7 @@ namespace Messenger.Api.Filters
                         throw new HttpResponseException(context.Request.CreateErrorResponse(HttpStatusCode.NotFound, ae));
 
                 case System.Data.SqlClient.SqlException sqle:
-                        logger.Error(sqle.ToString());
+                        logger.Error("SQL Server error: {0}",sqle.ToString());
                     throw new HttpResponseException(context.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, sqle));
 
                 default: logger.Error(exeption.ToString());
