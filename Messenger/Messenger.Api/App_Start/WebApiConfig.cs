@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
+using Messenger.Api.Handlers;
 namespace Messenger.Api
 {
     public static class WebApiConfig
@@ -10,7 +10,7 @@ namespace Messenger.Api
         public static void Register(HttpConfiguration config)
         {
             // Конфигурация и службы веб-API
-
+            config.MessageHandlers.Add(new LoggingHandler());
             // Маршруты веб-API
             config.MapHttpAttributeRoutes();
 

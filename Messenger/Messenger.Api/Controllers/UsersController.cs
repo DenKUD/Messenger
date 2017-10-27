@@ -35,10 +35,10 @@ namespace Messenger.Api.Controllers
         [Route("api/users/{id}")]
         public User Get(Guid id)
         {
-            logger.Trace("Попытка получения user");
-            var result= _usersRepository.Get(id);
-            logger.Trace("Попытка получения user успешна");
-            return result;
+            
+             return _usersRepository.Get(id);
+            
+           
         }
 
         /// <summary>
@@ -68,9 +68,9 @@ namespace Messenger.Api.Controllers
         {
             User result;
             var logger = LogManager.GetCurrentClassLogger();
-            logger.Info("Создание пользователя");
+            
             result= _usersRepository.Create(user);
-            logger.Info("Создание пользователя завершено id ={0}",result.Id);
+            logger.Info("Создан пользователь с id ={0}",result.Id);
             return result;
 
         }
@@ -86,6 +86,7 @@ namespace Messenger.Api.Controllers
             logger.Info("удаление пользователя c id={0}",id);
             _usersRepository.Delete(id);
             logger.Info("пользователь c id={0} удален", id);
+            
         }
 
         /// <summary>
