@@ -47,7 +47,7 @@ namespace Messenger.Api.Controllers
         /// <param name="username"></param>
         /// <returns></returns>
         [HttpGet]
-        [ExpectedExceptionsFilter]
+        [UserBasicAuthentification]
         [Route("api/users/username/{username}")]
         public IEnumerable<Guid> GetUserIdByName(string username)
         {

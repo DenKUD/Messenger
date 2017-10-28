@@ -33,8 +33,15 @@ namespace Messenger.Api.Filters
                     
                 }
                 string password = decodedToken.Substring(decodedToken.IndexOf(":") + 1);
-                if (!Messenger.Api.Extentions.Authenticator.Authentificate(user_id, password))
+                try
+                {
+                    if (!Messenger.Api.Extentions.Authenticator.Authentificate(user_id, password))
+                        actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized);
+                }
+                catch(ArgumentException e) when (e.Message== $"Пользователь с id {user_id} не найден")
+                {
                     actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized);
+                }
 
             }
 
