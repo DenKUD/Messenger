@@ -100,8 +100,10 @@
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Extentions\Authenticator.cs" />
     <Compile Include="Extentions\ExecTimeLoger.cs" />
     <Compile Include="Filters\ExpectedExceptionsFilterAttribute.cs" />
+    <Compile Include="Filters\UserBasicAuthentificationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

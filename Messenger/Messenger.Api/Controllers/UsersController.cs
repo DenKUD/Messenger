@@ -51,9 +51,9 @@ namespace Messenger.Api.Controllers
         [Route("api/users/username/{username}")]
         public IEnumerable<Guid> GetUserIdByName(string username)
         {
-            logger.Trace("Попытка получения user_id по username");
+            logger.Trace("Попытка получения user_id по username={0}",username);
             var result= _usersRepository.FindUserIdByName(username);
-            logger.Trace("Попытка получения user_id по username успешна");
+            logger.Trace("Попытка получения user_id по username={0} успешна",username);
             return result;
         }
 
@@ -67,8 +67,6 @@ namespace Messenger.Api.Controllers
         public User Create([FromBody] User user)
         {
             User result;
-            var logger = LogManager.GetCurrentClassLogger();
-            
             result= _usersRepository.Create(user);
             logger.Info("Создан пользователь с id ={0}",result.Id);
             return result;
@@ -80,6 +78,7 @@ namespace Messenger.Api.Controllers
         /// </summary>
         /// <param name="id">User id</param>
         [HttpDelete]
+        [UserBasicAuthentification]
         [Route("api/users/{id}")]
         public void Delete(Guid id)
         {
@@ -96,6 +95,7 @@ namespace Messenger.Api.Controllers
         /// <param name="user"> New user info</param>
         /// <returns></returns>
         [HttpPut]
+        [UserBasicAuthentification]
         [Route("api/users/{id}")]
         public User Update(Guid id,[FromBody] User user)
         {

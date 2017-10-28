@@ -12,6 +12,7 @@ using NLog;
 namespace Messenger.Api.Controllers
 {
     [ExpectedExceptionsFilter]
+    [UserBasicAuthentification]
     public class ChatsController : ApiController
     {
         private readonly IUsersRepository _usersRepository;
