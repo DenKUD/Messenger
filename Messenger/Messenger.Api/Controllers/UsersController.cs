@@ -47,7 +47,7 @@ namespace Messenger.Api.Controllers
         /// <param name="username"></param>
         /// <returns></returns>
         [HttpGet]
-        [UserBasicAuthentification]
+        
         [Route("api/users/username/{username}")]
         public IEnumerable<Guid> GetUserIdByName(string username)
         {
@@ -78,7 +78,6 @@ namespace Messenger.Api.Controllers
         /// </summary>
         /// <param name="id">User id</param>
         [HttpDelete]
-        [UserBasicAuthentification]
         [Route("api/users/{id}")]
         public void Delete(Guid id)
         {
@@ -95,7 +94,6 @@ namespace Messenger.Api.Controllers
         /// <param name="user"> New user info</param>
         /// <returns></returns>
         [HttpPut]
-        [UserBasicAuthentification]
         [Route("api/users/{id}")]
         public User Update(Guid id,[FromBody] User user)
         {
