@@ -17,10 +17,12 @@ namespace Messenger.Client.WinForms
         private ServiceClient _serviceClient;
         private List<Messenger.Model.User> _contacts;
         private List<Messenger.Model.Chat> _chats;
+        private Model.Chat _activeChat; 
         public MainForm()
         {
             _contacts = new List<Messenger.Model.User> ();
             _chats = new List<Messenger.Model.Chat>();
+            _activeChat = new Model.Chat { };
             InitializeComponent();
            
         }
@@ -36,8 +38,12 @@ namespace Messenger.Client.WinForms
                 }
             };
             smalProfileUserProfile.Update(_user);
-            
-            
+            _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
+            foreach(Model.Chat c in _chats)
+                lstBoxChats.Items.Add(c.Name);
+            lstboxContacts.Refresh();
+
+
 
         }
 
@@ -76,5 +82,22 @@ namespace Messenger.Client.WinForms
                 lstBoxChats.Items.Add(c.Name);
             lstBoxChats.Refresh();
         }
+
+        private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _activeChat = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single();
+            chatControl1.SetChat(_activeChat);
+            //chatControl1.RefreshMembers();
+        }
+
+        private void покинутьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var chatId  = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single().Id;
+            _serviceClient.DeleteUserFromChat(chatId, _user.Id);
+            _chats.Clear();
+            _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
+        }
+
+        
     }
 }
