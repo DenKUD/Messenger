@@ -12,10 +12,14 @@ namespace Messenger.Client.WinForms.Forms
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        private ServiceClient _serviceClient;
+        public Messenger.Model.User user;
+        public LoginForm(ServiceClient serviceClient)
         {
             InitializeComponent();
+            _serviceClient = serviceClient;
             txtBoxId.Mask = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
+            user = new Model.User { };
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -25,13 +29,22 @@ namespace Messenger.Client.WinForms.Forms
 
         private void btnSingUp_Click(object sender, EventArgs e)
         {
-            using (var form = new ProfileInfo())
+            using (var form = new ProfileInfo(_serviceClient))
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    
+                    this.user = form.user;
+                    form.Close();
                 }
             }
+            txtBoxId.Text = user.Id.ToString();
+            txtBoxPassword.Text = user.Password;
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            user.Id = Guid.Parse (txtBoxId.Text.ToString());
+            user.Password = txtBoxPassword.Text;
         }
     }
 }

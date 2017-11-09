@@ -10,7 +10,7 @@ using Messenger.Model;
 
 namespace Messenger.Client.WinForms
 {
-    class ServiceClient
+    public class ServiceClient
     {
         private readonly HttpClient _client;
 
@@ -25,7 +25,8 @@ namespace Messenger.Client.WinForms
         public User GetUser(Guid Id)
         {
             string uri = "users/" + Id.ToString();
-            var result =  _client.GetAsync(uri).Result.Content.ReadAsAsync<User>().Result;  
+            var result =  _client.GetAsync(uri).Result.Content.ReadAsAsync<User>().Result;
+            if (result == null) throw new ArgumentException("Пользователь не найден");
             return result;
         }
 
@@ -41,6 +42,7 @@ namespace Messenger.Client.WinForms
         {
             string uri = "users/username/" + username;
             var result = _client.GetAsync(uri).Result.Content.ReadAsAsync<List<User>>().Result;
+            if (result == null) throw new ArgumentException("Пользователь не найден");
             return result;
         }
 

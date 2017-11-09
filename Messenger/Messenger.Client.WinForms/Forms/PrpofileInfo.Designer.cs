@@ -34,9 +34,11 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
             this.lblBio = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxBio = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnLoadUserpic = new System.Windows.Forms.Button();
+            this.openFileDialogUserPic = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,26 +91,29 @@
             this.lblBio.TabIndex = 5;
             this.lblBio.Text = "Немного о себе";
             // 
-            // textBox1
+            // txtBoxBio
             // 
-            this.textBox1.Location = new System.Drawing.Point(339, 91);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 99);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtBoxBio.Location = new System.Drawing.Point(339, 91);
+            this.txtBoxBio.Multiline = true;
+            this.txtBoxBio.Name = "txtBoxBio";
+            this.txtBoxBio.Size = new System.Drawing.Size(203, 99);
+            this.txtBoxBio.TabIndex = 6;
+            this.txtBoxBio.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnOk
             // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.Location = new System.Drawing.Point(339, 196);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 45);
             this.btnOk.TabIndex = 7;
             this.btnOk.Text = "Принять";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(458, 196);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 45);
@@ -116,7 +121,22 @@
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // PrpofileInfo
+            // btnLoadUserpic
+            // 
+            this.btnLoadUserpic.Location = new System.Drawing.Point(12, 196);
+            this.btnLoadUserpic.Name = "btnLoadUserpic";
+            this.btnLoadUserpic.Size = new System.Drawing.Size(103, 45);
+            this.btnLoadUserpic.TabIndex = 9;
+            this.btnLoadUserpic.Text = "Загрузить изображение";
+            this.btnLoadUserpic.UseVisualStyleBackColor = true;
+            this.btnLoadUserpic.Click += new System.EventHandler(this.btnLoadUserpic_Click);
+            // 
+            // openFileDialogUserPic
+            // 
+            this.openFileDialogUserPic.FileName = "openFileDialog1";
+            this.openFileDialogUserPic.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogUserPic_FileOk);
+            // 
+            // ProfileInfo
             // 
             this.AcceptButton = this.btnOk;
             this.AllowDrop = true;
@@ -124,16 +144,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(554, 253);
+            this.Controls.Add(this.btnLoadUserpic);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxBio);
             this.Controls.Add(this.lblBio);
             this.Controls.Add(this.txtBoxPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtBoxUsername);
             this.Controls.Add(this.picBoxUserPic);
             this.Controls.Add(this.lblUsername);
-            this.Name = "PrpofileInfo";
+            this.Name = "ProfileInfo";
             this.Text = "PrpofileInfo";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.PrpofileInfo_DragDrop);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).EndInit();
@@ -150,8 +171,10 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.Label lblBio;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxBio;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnLoadUserpic;
+        private System.Windows.Forms.OpenFileDialog openFileDialogUserPic;
     }
 }

@@ -80,6 +80,12 @@
     <Compile Include="Controls\SmalProfile.Designer.cs">
       <DependentUpon>SmalProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddContactForm.Designer.cs">
+      <DependentUpon>AddContactForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\SmalProfile.resx">
       <DependentUpon>SmalProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddContactForm.resx">
+      <DependentUpon>AddContactForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

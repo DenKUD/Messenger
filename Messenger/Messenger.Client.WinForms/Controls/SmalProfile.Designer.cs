@@ -30,6 +30,7 @@
         {
             this.picBoxUserPic = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.lblUserId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,17 +47,27 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Location = new System.Drawing.Point(55, 29);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(46, 17);
+            this.lblUsername.Size = new System.Drawing.Size(73, 17);
             this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "label1";
+            this.lblUsername.Text = "Username";
             // 
-            // UserControl1
+            // lblUserId
+            // 
+            this.lblUserId.AutoSize = true;
+            this.lblUserId.Location = new System.Drawing.Point(55, 3);
+            this.lblUserId.Name = "lblUserId";
+            this.lblUserId.Size = new System.Drawing.Size(19, 17);
+            this.lblUserId.TabIndex = 2;
+            this.lblUserId.Text = "Id";
+            // 
+            // SmalProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblUserId);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.picBoxUserPic);
-            this.Name = "UserControl1";
+            this.Name = "SmalProfile";
             this.Size = new System.Drawing.Size(194, 52);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).EndInit();
             this.ResumeLayout(false);
@@ -66,7 +77,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picBoxUserPic;
         private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblUserId;
+        private System.Windows.Forms.PictureBox picBoxUserPic;
     }
 }

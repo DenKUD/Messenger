@@ -15,7 +15,7 @@ namespace Messenger.Client.WinForms.Controls
     public partial class MessageControl : UserControl
     {
         private Messenger.Model.Message _message;
-        public MessageControl(Messenger.Model.Message message)
+        public MessageControl(Model.Message message)
         {
             _message = message;
             InitializeComponent();

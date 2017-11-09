@@ -34,6 +34,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.saveattachDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnSaveAttach = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             this.txtBoxContents.Location = new System.Drawing.Point(100, 20);
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
-            this.txtBoxContents.Size = new System.Drawing.Size(128, 132);
+            this.txtBoxContents.Size = new System.Drawing.Size(128, 137);
             this.txtBoxContents.TabIndex = 2;
             // 
             // pictureBox1
@@ -73,18 +74,28 @@
             // 
             // btnSaveAttach
             // 
-            this.btnSaveAttach.Location = new System.Drawing.Point(3, 106);
+            this.btnSaveAttach.Location = new System.Drawing.Point(0, 106);
             this.btnSaveAttach.Name = "btnSaveAttach";
             this.btnSaveAttach.Size = new System.Drawing.Size(90, 26);
             this.btnSaveAttach.TabIndex = 4;
             this.btnSaveAttach.Text = "Сохранить";
             this.btnSaveAttach.UseVisualStyleBackColor = true;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(1, 132);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 25);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Удалить";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // MessageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSaveAttach);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtBoxContents);
@@ -106,5 +117,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SaveFileDialog saveattachDialog1;
         private System.Windows.Forms.Button btnSaveAttach;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -13,7 +13,13 @@ namespace Messenger.Client.WinForms.Controls
 {
     public partial class ChatControl : UserControl
     {
-        Messenger.Model.Chat _chat;
+        Messenger.Model.Chat _chat { get; set; }
+        public ChatControl()
+        {
+
+            InitializeComponent();
+            _chat = new Chat { };
+        }
         public ChatControl(Model.Chat cchat)
         {
 
