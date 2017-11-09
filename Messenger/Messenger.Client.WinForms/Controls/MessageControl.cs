@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Messenger.Model;
-using System.Drawing;
+
 
 namespace Messenger.Client.WinForms.Controls
 {

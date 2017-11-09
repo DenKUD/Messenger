@@ -11,10 +11,10 @@ using Messenger.Model;
 
 namespace Messenger.Client.WinForms.Controls
 {
-    public partial class Chat : UserControl
+    public partial class ChatControl : UserControl
     {
         Messenger.Model.Chat _chat;
-        public Chat(Model.Chat cchat)
+        public ChatControl(Model.Chat cchat)
         {
 
             InitializeComponent();

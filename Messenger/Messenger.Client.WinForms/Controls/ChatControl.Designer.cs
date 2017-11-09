@@ -1,6 +1,6 @@
 ﻿namespace Messenger.Client.WinForms.Controls
 {
-    partial class Chat
+    partial class ChatControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
