@@ -23,13 +23,14 @@ namespace Messenger.Client.WinForms
             _contacts = new List<Messenger.Model.User> ();
             _chats = new List<Messenger.Model.Chat>();
             _activeChat = new Model.Chat { };
+            _serviceClient = new ServiceClient("http://localhost:56121/api/");
             InitializeComponent();
-           
+            chatControl1.SetServiceClient(_serviceClient);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _serviceClient = new ServiceClient("http://localhost:56121/api/");
+            
             using (var form = new LoginForm(_serviceClient))
             {
                 if (form.ShowDialog() == DialogResult.OK)
@@ -38,11 +39,12 @@ namespace Messenger.Client.WinForms
                 }
             };
             smalProfileUserProfile.Update(_user);
+            chatControl1.SetUser(_user);
             _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
             foreach(Model.Chat c in _chats)
                 lstBoxChats.Items.Add(c.Name);
             lstboxContacts.Refresh();
-
+            
 
 
         }
@@ -98,6 +100,9 @@ namespace Messenger.Client.WinForms
             _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
         }
 
-        
+        private void lstBoxChats_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

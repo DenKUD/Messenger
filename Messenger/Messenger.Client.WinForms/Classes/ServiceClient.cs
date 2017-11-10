@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Messenger.Model;
-
+using System.Runtime.Serialization.Json;
 
 namespace Messenger.Client.WinForms
 {
@@ -112,11 +112,13 @@ namespace Messenger.Client.WinForms
             return result;
         }
 
-        public Message CreateMessage(Message message)
+        public void CreateMessage(Message message)
         {
             string uri = "messages";
-            var result = _client.PostAsJsonAsync(uri,message).Result.Content.ReadAsAsync<Message>().Result;
-            return result;
+           
+            var result = _client.PostAsJsonAsync(uri, message);//.Result.Content.ReadAsAsync<Message>().Result;
+            
+            //return result;
         }
 
         public string DeleteMessage(Guid id)

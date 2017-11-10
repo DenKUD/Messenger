@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
             this.txtBoxContents = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStripSaveImage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.сохранитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveattachDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnSaveAttach = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStripSaveImage.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -61,31 +64,39 @@
             this.txtBoxContents.Location = new System.Drawing.Point(100, 20);
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
-            this.txtBoxContents.Size = new System.Drawing.Size(128, 137);
+            this.txtBoxContents.Size = new System.Drawing.Size(171, 80);
             this.txtBoxContents.TabIndex = 2;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.ContextMenuStrip = this.contextMenuStripSaveImage;
+            this.pictureBox1.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
             this.pictureBox1.Location = new System.Drawing.Point(0, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(93, 80);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // btnSaveAttach
+            // contextMenuStripSaveImage
             // 
-            this.btnSaveAttach.Location = new System.Drawing.Point(0, 106);
-            this.btnSaveAttach.Name = "btnSaveAttach";
-            this.btnSaveAttach.Size = new System.Drawing.Size(90, 26);
-            this.btnSaveAttach.TabIndex = 4;
-            this.btnSaveAttach.Text = "Сохранить";
-            this.btnSaveAttach.UseVisualStyleBackColor = true;
+            this.contextMenuStripSaveImage.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStripSaveImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьИзображениеToolStripMenuItem});
+            this.contextMenuStripSaveImage.Name = "contextMenuStripSaveImage";
+            this.contextMenuStripSaveImage.Size = new System.Drawing.Size(253, 28);
+            // 
+            // сохранитьИзображениеToolStripMenuItem
+            // 
+            this.сохранитьИзображениеToolStripMenuItem.Name = "сохранитьИзображениеToolStripMenuItem";
+            this.сохранитьИзображениеToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
+            this.сохранитьИзображениеToolStripMenuItem.Text = "Сохранить изображение";
+            this.сохранитьИзображениеToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИзображениеToolStripMenuItem_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1, 132);
+            this.btnDelete.Location = new System.Drawing.Point(0, 106);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 25);
+            this.btnDelete.Size = new System.Drawing.Size(94, 25);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Удалить";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -96,14 +107,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSaveAttach);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtBoxContents);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUsername);
             this.Name = "MessageControl";
-            this.Size = new System.Drawing.Size(235, 160);
+            this.Size = new System.Drawing.Size(288, 150);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStripSaveImage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,7 +127,8 @@
         private System.Windows.Forms.TextBox txtBoxContents;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SaveFileDialog saveattachDialog1;
-        private System.Windows.Forms.Button btnSaveAttach;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripSaveImage;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьИзображениеToolStripMenuItem;
     }
 }

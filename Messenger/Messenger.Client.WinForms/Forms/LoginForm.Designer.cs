@@ -73,9 +73,9 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(277, 138);
+            this.btnCancel.Location = new System.Drawing.Point(277, 131);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -83,9 +83,9 @@
             // btnLogin
             // 
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLogin.Location = new System.Drawing.Point(277, 109);
+            this.btnLogin.Location = new System.Drawing.Point(196, 131);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(75, 30);
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Войти";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -93,9 +93,9 @@
             // 
             // btnSingUp
             // 
-            this.btnSingUp.Location = new System.Drawing.Point(12, 138);
+            this.btnSingUp.Location = new System.Drawing.Point(12, 131);
             this.btnSingUp.Name = "btnSingUp";
-            this.btnSingUp.Size = new System.Drawing.Size(161, 23);
+            this.btnSingUp.Size = new System.Drawing.Size(161, 30);
             this.btnSingUp.TabIndex = 7;
             this.btnSingUp.Text = "Зарегистрироваться";
             this.btnSingUp.UseVisualStyleBackColor = true;

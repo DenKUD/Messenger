@@ -50,10 +50,11 @@
             this.lstBoxChats.ContextMenuStrip = this.contextMenuStripChats;
             this.lstBoxChats.FormattingEnabled = true;
             this.lstBoxChats.ItemHeight = 16;
-            this.lstBoxChats.Location = new System.Drawing.Point(527, 80);
+            this.lstBoxChats.Location = new System.Drawing.Point(724, 80);
             this.lstBoxChats.Name = "lstBoxChats";
             this.lstBoxChats.Size = new System.Drawing.Size(87, 132);
             this.lstBoxChats.TabIndex = 2;
+            this.lstBoxChats.SelectedIndexChanged += new System.EventHandler(this.lstBoxChats_SelectedIndexChanged);
             // 
             // contextMenuStripChats
             // 
@@ -132,25 +133,25 @@
             // 
             // smalProfileUserProfile
             // 
-            this.smalProfileUserProfile.userName = null;
-            this.smalProfileUserProfile.userPic = null;
             this.smalProfileUserProfile.Location = new System.Drawing.Point(103, 12);
             this.smalProfileUserProfile.Name = "smalProfileUserProfile";
             this.smalProfileUserProfile.Size = new System.Drawing.Size(194, 52);
             this.smalProfileUserProfile.TabIndex = 1;
+            this.smalProfileUserProfile.userName = null;
+            this.smalProfileUserProfile.userPic = null;
             // 
             // chatControl1
             // 
-            this.chatControl1.Location = new System.Drawing.Point(105, 60);
+            this.chatControl1.Location = new System.Drawing.Point(135, 60);
             this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(416, 378);
+            this.chatControl1.Size = new System.Drawing.Size(583, 378);
             this.chatControl1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 460);
+            this.ClientSize = new System.Drawing.Size(825, 460);
             this.Controls.Add(this.lblContacts);
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.lstboxContacts);
