@@ -44,13 +44,17 @@ namespace Messenger.Client.WinForms
                 {
                     try
                     {
-                        if (form.userToFindId != null) _contacts.Add(_serviceClient.GetUser(form.userToFindId));
-                        else if (form.userToFindName != null) _contacts.AddRange(_serviceClient.GetUserByUsername(form.userToFindName));
-                        else MessageBox.Show("Ничего не введено");
+                        if (form.userToFindId != Guid.Empty) _contacts.Add(_serviceClient.GetUser(form.userToFindId));
+                        else
+                        {
+                            if (form.userToFindName != "") _contacts.AddRange(_serviceClient.GetUserByUsername(form.userToFindName));
+                            else MessageBox.Show("Ничего не введено");
+                        }
                     }
                     catch (ArgumentException exep)
                     {
-                        MessageBox.Show(exep.ToString());
+                        MessageBox.Show("Пользователь не найден");
+
                     }
                 }
             };
@@ -141,11 +145,20 @@ namespace Messenger.Client.WinForms
             _contacts.Clear();
             lstboxContacts.Items.Clear();
             chatControl1.Clear();
+            smalProfileUserProfile.Clear();
         }
 
         private void войтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Login();
+        }
+
+        private void пригласитьВАктивныйЧатToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var newMemberId = _contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id;
+            _serviceClient.AddUserToChat(newMemberId, _activeChat.Id);
+            chatControl1.RefreshChat();
+            chatControl1.RefreshMembers();
         }
     }
 }

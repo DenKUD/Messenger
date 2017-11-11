@@ -135,5 +135,10 @@ namespace Messenger.Client.WinForms.Controls
             Enabled = false;
             
         }
+
+        public void RefreshChat()
+        {
+            _chat = _serviceClient.GetChat(_chat.Id);
+        }
     }
 }

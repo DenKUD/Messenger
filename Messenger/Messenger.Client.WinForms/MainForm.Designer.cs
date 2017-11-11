@@ -47,6 +47,7 @@
             this.выходИхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
             this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
+            this.пригласитьВАктивныйЧатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripChats.SuspendLayout();
             this.contextMenuStripContacts.SuspendLayout();
             this.toolStripMainForm.SuspendLayout();
@@ -101,14 +102,15 @@
             this.contextMenuStripContacts.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripContacts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemCreateChat,
-            this.toolStripMenuDeleteUser});
+            this.toolStripMenuDeleteUser,
+            this.пригласитьВАктивныйЧатToolStripMenuItem});
             this.contextMenuStripContacts.Name = "contextMenuStripContacts";
-            this.contextMenuStripContacts.Size = new System.Drawing.Size(154, 52);
+            this.contextMenuStripContacts.Size = new System.Drawing.Size(269, 104);
             // 
             // toolStripMenuItemCreateChat
             // 
             this.toolStripMenuItemCreateChat.Name = "toolStripMenuItemCreateChat";
-            this.toolStripMenuItemCreateChat.Size = new System.Drawing.Size(153, 24);
+            this.toolStripMenuItemCreateChat.Size = new System.Drawing.Size(268, 24);
             this.toolStripMenuItemCreateChat.Text = "Начать чат";
             this.toolStripMenuItemCreateChat.Click += new System.EventHandler(this.toolStripMenuItemCreateChat_Click);
             // 
@@ -116,7 +118,7 @@
             // 
             this.toolStripMenuDeleteUser.CheckOnClick = true;
             this.toolStripMenuDeleteUser.Name = "toolStripMenuDeleteUser";
-            this.toolStripMenuDeleteUser.Size = new System.Drawing.Size(153, 24);
+            this.toolStripMenuDeleteUser.Size = new System.Drawing.Size(268, 24);
             this.toolStripMenuDeleteUser.Text = "Удалить";
             // 
             // btnAddContact
@@ -198,6 +200,13 @@
             this.chatControl1.Size = new System.Drawing.Size(583, 378);
             this.chatControl1.TabIndex = 0;
             // 
+            // пригласитьВАктивныйЧатToolStripMenuItem
+            // 
+            this.пригласитьВАктивныйЧатToolStripMenuItem.Name = "пригласитьВАктивныйЧатToolStripMenuItem";
+            this.пригласитьВАктивныйЧатToolStripMenuItem.Size = new System.Drawing.Size(268, 24);
+            this.пригласитьВАктивныйЧатToolStripMenuItem.Text = "Пригласить в активный чат";
+            this.пригласитьВАктивныйЧатToolStripMenuItem.Click += new System.EventHandler(this.пригласитьВАктивныйЧатToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,6 +250,7 @@
         private System.Windows.Forms.ToolStripMenuItem войтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходИхПрограммыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пригласитьВАктивныйЧатToolStripMenuItem;
     }
 }
 

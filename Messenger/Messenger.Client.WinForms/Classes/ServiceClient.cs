@@ -41,8 +41,11 @@ namespace Messenger.Client.WinForms
         public IEnumerable<User> GetUserByUsername(string username)
         {
             string uri = "users/username/" + username;
-            var result = _client.GetAsync(uri).Result.Content.ReadAsAsync<List<User>>().Result;
-            if (result == null) throw new ArgumentException("Пользователь не найден");
+            List<User> result = new List<User>();
+            var usersIds = _client.GetAsync(uri).Result.Content.ReadAsAsync<List<Guid>>().Result;
+            if (usersIds == null) throw new ArgumentException("Пользователь не найден");
+            foreach (Guid id in usersIds)
+                result.Add(GetUser(id));
             return result;
         }
 

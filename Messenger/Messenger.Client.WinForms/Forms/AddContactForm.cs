@@ -22,7 +22,14 @@ namespace Messenger.Client.WinForms.Forms
         
         private void btnFind_Click(object sender, EventArgs e)
         {
-            userToFindId = Guid.Parse(txtBoxId.Text.ToString());
+            try
+            {
+                userToFindId = Guid.Parse(txtBoxId.Text.ToString());
+            }
+            catch (FormatException)
+            {
+                userToFindId = Guid.Empty;
+            }
             userToFindName = txtBoxUserName.Text;
         }
     }
