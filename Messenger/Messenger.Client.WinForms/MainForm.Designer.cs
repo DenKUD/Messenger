@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lstBoxChats = new System.Windows.Forms.ListBox();
             this.contextMenuStripChats = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,10 +40,16 @@
             this.toolStripMenuDeleteUser = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddContact = new System.Windows.Forms.Button();
             this.lblContacts = new System.Windows.Forms.Label();
+            this.toolStripMainForm = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.войтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходИхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
             this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
             this.contextMenuStripChats.SuspendLayout();
             this.contextMenuStripContacts.SuspendLayout();
+            this.toolStripMainForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstBoxChats
@@ -131,18 +138,62 @@
             this.lblContacts.TabIndex = 5;
             this.lblContacts.Text = "Контакты";
             // 
+            // toolStripMainForm
+            // 
+            this.toolStripMainForm.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStripMainForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1});
+            this.toolStripMainForm.Location = new System.Drawing.Point(0, 0);
+            this.toolStripMainForm.Name = "toolStripMainForm";
+            this.toolStripMainForm.Size = new System.Drawing.Size(825, 27);
+            this.toolStripMainForm.TabIndex = 6;
+            this.toolStripMainForm.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.войтиToolStripMenuItem,
+            this.выйтиToolStripMenuItem,
+            this.выходИхПрограммыToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(59, 24);
+            this.toolStripDropDownButton1.Text = "Файл";
+            // 
+            // войтиToolStripMenuItem
+            // 
+            this.войтиToolStripMenuItem.Name = "войтиToolStripMenuItem";
+            this.войтиToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.войтиToolStripMenuItem.Text = "Войти";
+            this.войтиToolStripMenuItem.Click += new System.EventHandler(this.войтиToolStripMenuItem_Click);
+            // 
+            // выйтиToolStripMenuItem
+            // 
+            this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.выйтиToolStripMenuItem.Text = "Выйти";
+            this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.выйтиToolStripMenuItem_Click);
+            // 
+            // выходИхПрограммыToolStripMenuItem
+            // 
+            this.выходИхПрограммыToolStripMenuItem.Name = "выходИхПрограммыToolStripMenuItem";
+            this.выходИхПрограммыToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.выходИхПрограммыToolStripMenuItem.Text = "Выход из программы";
+            this.выходИхПрограммыToolStripMenuItem.Click += new System.EventHandler(this.выходИхПрограммыToolStripMenuItem_Click);
+            // 
             // smalProfileUserProfile
             // 
-            this.smalProfileUserProfile.Location = new System.Drawing.Point(103, 12);
+            this.smalProfileUserProfile.Location = new System.Drawing.Point(135, 28);
             this.smalProfileUserProfile.Name = "smalProfileUserProfile";
             this.smalProfileUserProfile.Size = new System.Drawing.Size(194, 52);
             this.smalProfileUserProfile.TabIndex = 1;
-            this.smalProfileUserProfile.userName = null;
-            this.smalProfileUserProfile.userPic = null;
             // 
             // chatControl1
             // 
-            this.chatControl1.Location = new System.Drawing.Point(135, 60);
+            this.chatControl1.Enabled = false;
+            this.chatControl1.Location = new System.Drawing.Point(135, 80);
             this.chatControl1.Name = "chatControl1";
             this.chatControl1.Size = new System.Drawing.Size(583, 378);
             this.chatControl1.TabIndex = 0;
@@ -152,6 +203,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 460);
+            this.Controls.Add(this.toolStripMainForm);
             this.Controls.Add(this.lblContacts);
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.lstboxContacts);
@@ -163,6 +215,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.contextMenuStripChats.ResumeLayout(false);
             this.contextMenuStripContacts.ResumeLayout(false);
+            this.toolStripMainForm.ResumeLayout(false);
+            this.toolStripMainForm.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +236,11 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripChats;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem покинутьToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStripMainForm;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem войтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem выходИхПрограммыToolStripMenuItem;
     }
 }
 

@@ -17,14 +17,14 @@ namespace Messenger.Client.WinForms.Controls
         private List<Model.Message> _messages;
         private ServiceClient _serviceClient;
         private User _user;
+
         public ChatControl()
         {
             InitializeComponent();
             _chat = new Chat { };
             _user = new User { };
             _serviceClient =new ServiceClient("http://localhost:56121/api/") ;
-            _messages = new List<Model.Message> { };
-            
+            _messages = new List<Model.Message> { };     
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
         {
@@ -46,6 +46,7 @@ namespace Messenger.Client.WinForms.Controls
             GetMessages();
             DisplayMessages();
             timerGetMessages.Start();
+            Enabled = true;
         }
 
         public void SetServiceClient(ServiceClient serviceClient)
@@ -118,14 +119,21 @@ namespace Messenger.Client.WinForms.Controls
            
         }
 
-        private void btnAddUser_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void timerGetMessages_Tick(object sender, EventArgs e)
         {
             if(GetMessages()) DisplayMessages();
+        }
+
+        public void Clear()
+        {
+            timerGetMessages.Stop();
+            _chat = null;
+            _messages.Clear();
+            _user=null;
+            flowLayoutPanelChatMembers.Controls.Clear();
+            flowLayoutPanelMessages.Controls.Clear();
+            Enabled = false;
+            
         }
     }
 }

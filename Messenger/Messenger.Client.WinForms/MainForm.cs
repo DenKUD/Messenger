@@ -18,6 +18,7 @@ namespace Messenger.Client.WinForms
         private List<Messenger.Model.User> _contacts;
         private List<Messenger.Model.Chat> _chats;
         private Model.Chat _activeChat; 
+
         public MainForm()
         {
             _contacts = new List<Messenger.Model.User> ();
@@ -30,23 +31,9 @@ namespace Messenger.Client.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
-            using (var form = new LoginForm(_serviceClient))
-            {
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    _user = _serviceClient.GetUser(form.user.Id);
-                }
-            };
-            smalProfileUserProfile.Update(_user);
-            chatControl1.SetUser(_user);
-            _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
-            foreach(Model.Chat c in _chats)
-                lstBoxChats.Items.Add(c.Name);
-            lstboxContacts.Refresh();
-            
 
-
+            Login();
+           
         }
 
         private void btnAddContact_Click(object sender, EventArgs e)
@@ -71,7 +58,6 @@ namespace Messenger.Client.WinForms
             foreach (Model.User u in _contacts)
                 lstboxContacts.Items.Add(u.Name);
             lstboxContacts.Refresh();
-           
         }
 
         private void toolStripMenuItemCreateChat_Click(object sender, EventArgs e)
@@ -103,6 +89,63 @@ namespace Messenger.Client.WinForms
         private void lstBoxChats_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void выходИхПрограммыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            this.Close();
+        }
+
+        private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
+
+        private bool Login()
+        {
+            using (var form = new LoginForm(_serviceClient))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    _user = _serviceClient.GetUser(form.user.Id);
+                    if ((_user.Id != Guid.Empty) && (form.user.Password == _user.Password))
+                    {
+                        smalProfileUserProfile.Update(_user);
+                        chatControl1.SetUser(_user);
+                        _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
+                        foreach (Model.Chat c in _chats)
+                            lstBoxChats.Items.Add(c.Name);
+                        //lstboxContacts.Refresh();
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Неверный логин или пароль");
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Необходимо войти или зарегистрироваться");
+                    return false;
+                }
+            };
+        }
+
+        private void Logout()
+        {
+            _user = null;
+            _chats.Clear();
+            lstBoxChats.Items.Clear();
+            _contacts.Clear();
+            lstboxContacts.Items.Clear();
+            chatControl1.Clear();
+        }
+
+        private void войтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login();
         }
     }
 }

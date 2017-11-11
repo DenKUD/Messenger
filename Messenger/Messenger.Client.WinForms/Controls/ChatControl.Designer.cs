@@ -34,7 +34,6 @@
             this.btnPost = new System.Windows.Forms.Button();
             this.flowLayoutPanelChatMembers = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMessages = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAddUser = new System.Windows.Forms.Button();
             this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
             this.timerGetMessages = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
@@ -74,7 +73,7 @@
             this.flowLayoutPanelChatMembers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelChatMembers.Location = new System.Drawing.Point(387, 20);
             this.flowLayoutPanelChatMembers.Name = "flowLayoutPanelChatMembers";
-            this.flowLayoutPanelChatMembers.Size = new System.Drawing.Size(187, 240);
+            this.flowLayoutPanelChatMembers.Size = new System.Drawing.Size(187, 277);
             this.flowLayoutPanelChatMembers.TabIndex = 4;
             // 
             // flowLayoutPanelMessages
@@ -87,16 +86,6 @@
             this.flowLayoutPanelMessages.Size = new System.Drawing.Size(375, 277);
             this.flowLayoutPanelMessages.TabIndex = 5;
             this.flowLayoutPanelMessages.WrapContents = false;
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Location = new System.Drawing.Point(387, 266);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(187, 31);
-            this.btnAddUser.TabIndex = 6;
-            this.btnAddUser.Text = "Добавить";
-            this.btnAddUser.UseVisualStyleBackColor = true;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // pictureBoxAttach
             // 
@@ -116,7 +105,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.pictureBoxAttach);
-            this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.flowLayoutPanelMessages);
             this.Controls.Add(this.flowLayoutPanelChatMembers);
             this.Controls.Add(this.btnPost);
@@ -137,7 +125,6 @@
         private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelChatMembers;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMessages;
-        private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.PictureBox pictureBoxAttach;
         private System.Windows.Forms.Timer timerGetMessages;
     }

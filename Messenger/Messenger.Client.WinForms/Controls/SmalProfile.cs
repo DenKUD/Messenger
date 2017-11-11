@@ -13,8 +13,8 @@ namespace Messenger.Client.WinForms.Controls
 {
     public partial class SmalProfile : UserControl
     {
-        public Image userPic { get; set; }
-        public string userName { get; set; }
+        private Image _userPic;
+        private string _userName;
         public SmalProfile(User user)
         {
             InitializeComponent();
@@ -33,15 +33,26 @@ namespace Messenger.Client.WinForms.Controls
             {
                 try
                 {
-                    userPic = (Bitmap)new ImageConverter().ConvertFrom(user.Userpic);
-                    this.picBoxUserPic.Image = userPic;
+                    _userPic = (Bitmap)new ImageConverter().ConvertFrom(user.Userpic);
+                    this.picBoxUserPic.Image = _userPic;
                 }
                 catch (ArgumentException ex) { }
             }
-            userName = user.Name;
-            this.lblUsername.Text = userName;
+            _userName = user.Name;
+            this.lblUsername.Text = _userName;
             this.lblUserId.Text = user.Id.ToString();
             this.Refresh();
+            
         }
+        
+        public void Clear()
+        {
+            _userPic = null;
+            _userName = null;
+            picBoxUserPic.Image.Dispose();
+            lblUsername.Text = "";
+            lblUserId.Text = "";
+        }
+       
     }
 }

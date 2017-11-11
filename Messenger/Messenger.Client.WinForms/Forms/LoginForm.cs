@@ -43,8 +43,20 @@ namespace Messenger.Client.WinForms.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            user.Id = Guid.Parse (txtBoxId.Text.ToString());
-            user.Password = txtBoxPassword.Text;
+            try
+            {
+                user.Id = Guid.Parse(txtBoxId.Text.ToString());
+                user.Password = txtBoxPassword.Text;
+            }
+            catch(FormatException ex)
+            {
+                MessageBox.Show("Неправильно введен логин");
+            }
+            finally
+            {
+                txtBoxId.Text = "";
+                txtBoxPassword.Text = "";
+            }
         }
     }
 }
