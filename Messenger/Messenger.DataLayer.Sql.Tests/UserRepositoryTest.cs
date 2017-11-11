@@ -110,7 +110,7 @@ namespace Messenger.DataLayer.Sql.Tests
 
             var user = new User
             {
-                Name = "UniqueUser",
+                Name = "UniqueUserVeryUnique",
                 Userpic = Encoding.UTF8.GetBytes("ava"),
                 Password = "password",
                 Bio = "test"

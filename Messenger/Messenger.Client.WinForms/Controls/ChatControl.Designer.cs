@@ -97,7 +97,7 @@
             // 
             // timerGetMessages
             // 
-            this.timerGetMessages.Interval = 5000;
+            this.timerGetMessages.Interval = 10000;
             this.timerGetMessages.Tick += new System.EventHandler(this.timerGetMessages_Tick);
             // 
             // ChatControl

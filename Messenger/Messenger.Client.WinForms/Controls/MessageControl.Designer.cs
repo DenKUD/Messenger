@@ -46,9 +46,9 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.Location = new System.Drawing.Point(3, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(46, 17);
+            this.lblUsername.Size = new System.Drawing.Size(73, 17);
             this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "label1";
+            this.lblUsername.Text = "Username";
             // 
             // lblDateTime
             // 
@@ -64,7 +64,8 @@
             this.txtBoxContents.Location = new System.Drawing.Point(100, 20);
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
-            this.txtBoxContents.Size = new System.Drawing.Size(171, 80);
+            this.txtBoxContents.ReadOnly = true;
+            this.txtBoxContents.Size = new System.Drawing.Size(200, 111);
             this.txtBoxContents.TabIndex = 2;
             // 
             // pictureBox1
@@ -112,7 +113,7 @@
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUsername);
             this.Name = "MessageControl";
-            this.Size = new System.Drawing.Size(288, 150);
+            this.Size = new System.Drawing.Size(303, 150);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStripSaveImage.ResumeLayout(false);
             this.ResumeLayout(false);

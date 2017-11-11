@@ -111,7 +111,7 @@ namespace Messenger.Client.WinForms
         public Message GetMessage(Guid Id)
         {
             string uri = "messages/" + Id.ToString();
-            var result = _client.GetAsync(uri).Result.Content.ReadAsAsync<Message>().Result;
+            var result =  _client.GetAsync(uri).Result.Content.ReadAsAsync<Message>().Result;
             return result;
         }
 
@@ -141,7 +141,7 @@ namespace Messenger.Client.WinForms
         public IEnumerable<Guid> GetChatMessegesIds(Guid id)
         {
             string uri = "messages/chat/" + id.ToString();
-            var result = _client.GetAsync(uri).Result.Content.ReadAsAsync<List<Guid>>().Result;
+            var result =   _client.GetAsync(uri).Result.Content.ReadAsAsync<List<Guid>>().Result;
             return result;
         }
 
