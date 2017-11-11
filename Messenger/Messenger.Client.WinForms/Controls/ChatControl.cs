@@ -73,18 +73,10 @@ namespace Messenger.Client.WinForms.Controls
         {
             _messages.Clear();
             _messages.AddRange(messages);
-            _messages.OrderBy(x => x.dtime);
-            flowLayoutPanelMessages.SuspendLayout();
-            flowLayoutPanelMessages.Controls.Clear();
-            foreach (Model.Message m in _messages)
-                flowLayoutPanelMessages.Controls.Add(new MessageControl(m));
-            flowLayoutPanelMessages.ResumeLayout();
-            flowLayoutPanelMessages.Refresh();
         }
 
         public bool GetMessages()
-        { 
-            
+        {  
             List<Model.Message> newMessages = new List<Model.Message> { };
             foreach (Guid id in _serviceClient.GetChatMessegesIds(_chat.Id))
                 newMessages.Add(_serviceClient.GetMessage(id));
@@ -97,7 +89,7 @@ namespace Messenger.Client.WinForms.Controls
 
         public void DisplayMessages()
         {
-            _messages.OrderBy(x => x.dtime.Ticks);
+            _messages.Sort((x, y) => DateTime.Compare(x.dtime, y.dtime));
             flowLayoutPanelMessages.SuspendLayout();
             flowLayoutPanelMessages.Controls.Clear();
             foreach (Model.Message m in _messages)
@@ -132,8 +124,7 @@ namespace Messenger.Client.WinForms.Controls
             _user=null;
             flowLayoutPanelChatMembers.Controls.Clear();
             flowLayoutPanelMessages.Controls.Clear();
-            Enabled = false;
-            
+            Enabled = false;   
         }
 
         public void RefreshChat()
