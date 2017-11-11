@@ -35,8 +35,12 @@
             this.flowLayoutPanelChatMembers = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMessages = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
-            this.timerGetMessages = new System.Windows.Forms.Timer(this.components);
+            this.timerRefreshMessages = new System.Windows.Forms.Timer(this.components);
+            this.contexMenuStripAttach = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.прикрепитьВложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialogSelectAttach = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
+            this.contexMenuStripAttach.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblChatName
@@ -51,6 +55,7 @@
             // txtBoxPost
             // 
             this.txtBoxPost.AcceptsReturn = true;
+            this.txtBoxPost.ContextMenuStrip = this.contexMenuStripAttach;
             this.txtBoxPost.Location = new System.Drawing.Point(58, 303);
             this.txtBoxPost.Multiline = true;
             this.txtBoxPost.Name = "txtBoxPost";
@@ -89,16 +94,38 @@
             // 
             // pictureBoxAttach
             // 
+            this.pictureBoxAttach.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
             this.pictureBoxAttach.Location = new System.Drawing.Point(6, 303);
             this.pictureBoxAttach.Name = "pictureBoxAttach";
             this.pictureBoxAttach.Size = new System.Drawing.Size(46, 57);
+            this.pictureBoxAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAttach.TabIndex = 7;
             this.pictureBoxAttach.TabStop = false;
             // 
-            // timerGetMessages
+            // timerRefreshMessages
             // 
-            this.timerGetMessages.Interval = 10000;
-            this.timerGetMessages.Tick += new System.EventHandler(this.timerGetMessages_Tick);
+            this.timerRefreshMessages.Interval = 10000;
+            this.timerRefreshMessages.Tick += new System.EventHandler(this.timerGetMessages_Tick);
+            // 
+            // contexMenuStripAttach
+            // 
+            this.contexMenuStripAttach.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contexMenuStripAttach.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.прикрепитьВложениеToolStripMenuItem});
+            this.contexMenuStripAttach.Name = "contexMenuStripAttach";
+            this.contexMenuStripAttach.Size = new System.Drawing.Size(238, 28);
+            // 
+            // прикрепитьВложениеToolStripMenuItem
+            // 
+            this.прикрепитьВложениеToolStripMenuItem.Name = "прикрепитьВложениеToolStripMenuItem";
+            this.прикрепитьВложениеToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
+            this.прикрепитьВложениеToolStripMenuItem.Text = "Прикрепить вложение";
+            this.прикрепитьВложениеToolStripMenuItem.Click += new System.EventHandler(this.прикрепитьВложениеToolStripMenuItem_Click);
+            // 
+            // openFileDialogSelectAttach
+            // 
+            this.openFileDialogSelectAttach.FileName = "openFileDialog1";
+            this.openFileDialogSelectAttach.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSelectAttach_FileOk);
             // 
             // ChatControl
             // 
@@ -113,6 +140,7 @@
             this.Name = "ChatControl";
             this.Size = new System.Drawing.Size(577, 363);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).EndInit();
+            this.contexMenuStripAttach.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +154,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelChatMembers;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMessages;
         private System.Windows.Forms.PictureBox pictureBoxAttach;
-        private System.Windows.Forms.Timer timerGetMessages;
+        private System.Windows.Forms.Timer timerRefreshMessages;
+        private System.Windows.Forms.ContextMenuStrip contexMenuStripAttach;
+        private System.Windows.Forms.ToolStripMenuItem прикрепитьВложениеToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialogSelectAttach;
     }
 }

@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Messenger.Model;
 
@@ -18,13 +17,18 @@ namespace Messenger.Client.WinForms.Controls
         private ServiceClient _serviceClient;
         private User _user;
         private System.Threading.Timer _timer;
+        private byte[] _attach;
+        private bool _gotNewMessages;
+
         public ChatControl()
         {
             InitializeComponent();
             _chat = new Chat { };
             _user = new User { };
             _serviceClient =new ServiceClient("http://localhost:56121/api/") ;
-            _messages = new List<Model.Message> { };     
+            _messages = new List<Model.Message> { };
+            _attach = null;
+            _gotNewMessages = false;
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
         {
@@ -43,7 +47,7 @@ namespace Messenger.Client.WinForms.Controls
         {
             _chat = chat;
             RefreshMembers();
-            timerGetMessages.Start();
+            timerRefreshMessages.Start();
             Enabled = true;
             _timer = new System.Threading.Timer(new System.Threading.TimerCallback(GetMessages), null, 5000, 5000);
         }
@@ -67,13 +71,7 @@ namespace Messenger.Client.WinForms.Controls
             }
             flowLayoutPanelChatMembers.ResumeLayout();
         }
-        /*
-        public void GetMessages(List<Model.Message> messages)
-        {
-            _messages.Clear();
-            _messages.AddRange(messages);
-        }
-        */
+        
         public void GetMessages(object state)
         {  
             List<Model.Message> newMessages = new List<Model.Message> { };
@@ -83,6 +81,7 @@ namespace Messenger.Client.WinForms.Controls
             {
                 _messages.Clear(); _messages.AddRange(newMessages);// return true;
             }
+            _gotNewMessages = true;
             //return false;
         }
 
@@ -106,20 +105,22 @@ namespace Messenger.Client.WinForms.Controls
             Chat chat = new Chat { };
             chat.Id = _chat.Id;
             var MessageToPost = new Model.Message
-            { Text = txtBoxPost.Text, Chat = chat, User=user,dtime=DateTime.Now,SelfDestroy=false,IsRead=false };
+            { Text = txtBoxPost.Text, Chat = chat, User=user,dtime=DateTime.Now,SelfDestroy=false,IsRead=false,Body=_attach };
             _serviceClient.CreateMessage(MessageToPost);
             txtBoxPost.Text = "";
+            _attach = null;
+            pictureBoxAttach.Image = null;
         }
 
         private void timerGetMessages_Tick(object sender, EventArgs e)
         {
-             DisplayMessages();
+            if (_gotNewMessages) { DisplayMessages(); _gotNewMessages = false; }
         }
 
         public void Clear()
         {
             _timer.Dispose();
-            timerGetMessages.Stop();
+            timerRefreshMessages.Stop();
             _chat = null;
             _messages.Clear();
             _user=null;
@@ -131,6 +132,24 @@ namespace Messenger.Client.WinForms.Controls
         public void RefreshChat()
         {
             _chat = _serviceClient.GetChat(_chat.Id);
+        }
+
+        private void прикрепитьВложениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialogSelectAttach.ShowDialog();
+        }
+
+        private void openFileDialogSelectAttach_FileOk(object sender, CancelEventArgs e)
+        {
+            _attach = System.IO.File.ReadAllBytes(openFileDialogSelectAttach.FileName);
+            try
+            {
+                pictureBoxAttach.Image = (Bitmap)new ImageConverter().ConvertFrom(_attach);
+            }
+            catch (ArgumentException ane)
+            {
+                pictureBoxAttach.Image = Properties.Resources.attach as Bitmap;
+            }
         }
     }
 }

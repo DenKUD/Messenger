@@ -26,6 +26,7 @@ namespace Messenger.Client.WinForms.Controls
             InitializeComponent();
             
         }
+
         public void Update(User user)
         {
             picBoxUserPic.SizeMode = PictureBoxSizeMode.StretchImage;
