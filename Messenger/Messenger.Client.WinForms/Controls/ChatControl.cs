@@ -16,9 +16,9 @@ namespace Messenger.Client.WinForms.Controls
         private List<Model.Message> _messages;
         private ServiceClient _serviceClient;
         private User _user;
-        private System.Threading.Timer _timer;
+        //private System.Threading.Timer _timer;
         private byte[] _attach;
-        private bool _gotNewMessages;
+        //private bool _gotNewMessages;
         private int _howManyMessages;
 
         public ChatControl()
@@ -29,7 +29,7 @@ namespace Messenger.Client.WinForms.Controls
             _serviceClient =new ServiceClient("http://localhost:56121/api/") ;
             _messages = new List<Model.Message> { };
             _attach = null;
-            _gotNewMessages = false;
+            //_gotNewMessages = false;
             _howManyMessages = 0;
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
@@ -51,7 +51,7 @@ namespace Messenger.Client.WinForms.Controls
             RefreshMembers();
             timerRefreshMessages.Start();
             Enabled = true;
-            _timer = new System.Threading.Timer(new System.Threading.TimerCallback(GetMessages), null, 10, 10);
+            //_timer = new System.Threading.Timer(new System.Threading.TimerCallback(GetMessages), null, 10, 10);
             lblChatName.Text = _chat.Name;
         }
 
@@ -74,19 +74,18 @@ namespace Messenger.Client.WinForms.Controls
             }
             flowLayoutPanelChatMembers.ResumeLayout();
         }
-        
-        public void GetMessages(object state)
+
+        public bool GetMessages()
         {
-            //List<Model.Message> newMessages = new List<Model.Message> { };
-            _messages.Clear();
+            List<Model.Message> newMessages = new List<Model.Message> { };
             foreach (Guid id in _serviceClient.GetChatMessegesIds(_chat.Id))
-                /*new*/ _messages.Add(_serviceClient.GetMessage(id));
-            if (_messages.Count() > _howManyMessages)
+                newMessages.Add(_serviceClient.GetMessage(id));
+            if (_messages.Count != newMessages.Count)
             {
-                _howManyMessages = _messages.Count();
-                _gotNewMessages= true;
+                _messages.Clear(); _messages.AddRange(newMessages); return true;
             }
-            else _gotNewMessages= false;
+            //_gotNewMessages = true;
+            else return false;
         }
 
         public void DisplayMessages()
@@ -117,20 +116,13 @@ namespace Messenger.Client.WinForms.Controls
         }
 
         private void timerGetMessages_Tick(object sender, EventArgs e)
-        {  
-            if ( _gotNewMessages)
-            {
-                timerRefreshMessages.Stop();
-                _timer.Dispose();
-                DisplayMessages();
-                _timer = new System.Threading.Timer(new System.Threading.TimerCallback(GetMessages), null, 2000, 2000);
-                timerRefreshMessages.Start();
-            }
+        {
+            if (GetMessages()) { DisplayMessages(); }
         }
 
         public void Clear()
         {
-            _timer.Dispose();
+            //_timer.Dispose();
             timerRefreshMessages.Stop();
             _chat = null;
             _messages.Clear();

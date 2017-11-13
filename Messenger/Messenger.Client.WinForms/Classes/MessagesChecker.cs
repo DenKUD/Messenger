@@ -20,25 +20,7 @@ namespace Messenger.Client.WinForms.Classes
             _client = serviceClient;
             _chatId = chatId;
         }
-        public async Task<List<Message>> CheckMessages(Guid chatId)
-        {
-
-            return 
-        }
-        private void GetMessages(object state)
-        {
-            
-            //List<Model.Message> newMessages = new List<Model.Message> { };
-            var newMessages
-            foreach (Guid id in _Client.GetChatMessegesIds(_chat.Id))
-                
-                _messages.Add(_serviceClient.GetMessage(id));
-            if (_messages.Count() > _howManyMessages)
-            {
-                _howManyMessages = _messages.Count();
-                _gotNewMessages = true;
-            }
-            else _gotNewMessages = false;
-        }
+        
+        
     }
 }
