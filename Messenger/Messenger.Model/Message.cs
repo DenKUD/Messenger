@@ -16,5 +16,13 @@ namespace Messenger.Model
         public byte[] Body { get; set; }
         public bool SelfDestroy { get; set; }
         public bool IsRead { get; set; }
+        public override bool Equals(Object obj)
+        {
+            Message messageObj = obj as Message;
+            if (messageObj == null)
+                return false;
+            else
+                return (Id.Equals(messageObj.Id)&&Text.Equals(messageObj.Text)&&Body.Equals(messageObj.Body));
+        }
     }
 }

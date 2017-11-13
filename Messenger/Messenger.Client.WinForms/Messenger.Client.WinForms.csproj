@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\MessagesChecker.cs" />
     <Compile Include="Classes\MessengerInstance.cs" />
     <Compile Include="Controls\ChatControl.cs">
       <SubType>UserControl</SubType>
