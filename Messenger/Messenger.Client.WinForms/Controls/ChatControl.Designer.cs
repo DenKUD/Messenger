@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.lblChatName = new System.Windows.Forms.Label();
             this.txtBoxPost = new System.Windows.Forms.TextBox();
+            this.contexMenuStripAttach = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.прикрепитьВложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPost = new System.Windows.Forms.Button();
             this.flowLayoutPanelChatMembers = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMessages = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
             this.timerRefreshMessages = new System.Windows.Forms.Timer(this.components);
-            this.contexMenuStripAttach = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.прикрепитьВложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogSelectAttach = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.contexMenuStripAttach.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
             // 
             // lblChatName
@@ -62,6 +62,21 @@
             this.txtBoxPost.Size = new System.Drawing.Size(323, 57);
             this.txtBoxPost.TabIndex = 2;
             // 
+            // contexMenuStripAttach
+            // 
+            this.contexMenuStripAttach.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contexMenuStripAttach.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.прикрепитьВложениеToolStripMenuItem});
+            this.contexMenuStripAttach.Name = "contexMenuStripAttach";
+            this.contexMenuStripAttach.Size = new System.Drawing.Size(238, 28);
+            // 
+            // прикрепитьВложениеToolStripMenuItem
+            // 
+            this.прикрепитьВложениеToolStripMenuItem.Name = "прикрепитьВложениеToolStripMenuItem";
+            this.прикрепитьВложениеToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
+            this.прикрепитьВложениеToolStripMenuItem.Text = "Прикрепить вложение";
+            this.прикрепитьВложениеToolStripMenuItem.Click += new System.EventHandler(this.прикрепитьВложениеToolStripMenuItem_Click);
+            // 
             // btnPost
             // 
             this.btnPost.Location = new System.Drawing.Point(387, 303);
@@ -78,7 +93,7 @@
             this.flowLayoutPanelChatMembers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelChatMembers.Location = new System.Drawing.Point(387, 20);
             this.flowLayoutPanelChatMembers.Name = "flowLayoutPanelChatMembers";
-            this.flowLayoutPanelChatMembers.Size = new System.Drawing.Size(187, 277);
+            this.flowLayoutPanelChatMembers.Size = new System.Drawing.Size(264, 277);
             this.flowLayoutPanelChatMembers.TabIndex = 4;
             // 
             // flowLayoutPanelMessages
@@ -104,23 +119,8 @@
             // 
             // timerRefreshMessages
             // 
-            this.timerRefreshMessages.Interval = 10000;
+            this.timerRefreshMessages.Interval = 4000;
             this.timerRefreshMessages.Tick += new System.EventHandler(this.timerGetMessages_Tick);
-            // 
-            // contexMenuStripAttach
-            // 
-            this.contexMenuStripAttach.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contexMenuStripAttach.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.прикрепитьВложениеToolStripMenuItem});
-            this.contexMenuStripAttach.Name = "contexMenuStripAttach";
-            this.contexMenuStripAttach.Size = new System.Drawing.Size(238, 28);
-            // 
-            // прикрепитьВложениеToolStripMenuItem
-            // 
-            this.прикрепитьВложениеToolStripMenuItem.Name = "прикрепитьВложениеToolStripMenuItem";
-            this.прикрепитьВложениеToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
-            this.прикрепитьВложениеToolStripMenuItem.Text = "Прикрепить вложение";
-            this.прикрепитьВложениеToolStripMenuItem.Click += new System.EventHandler(this.прикрепитьВложениеToolStripMenuItem_Click);
             // 
             // openFileDialogSelectAttach
             // 
@@ -138,9 +138,9 @@
             this.Controls.Add(this.txtBoxPost);
             this.Controls.Add(this.lblChatName);
             this.Name = "ChatControl";
-            this.Size = new System.Drawing.Size(577, 363);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).EndInit();
+            this.Size = new System.Drawing.Size(658, 363);
             this.contexMenuStripAttach.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

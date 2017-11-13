@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picBoxUserPic = new System.Windows.Forms.PictureBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblUserId = new System.Windows.Forms.Label();
+            this.picBoxUserPic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picBoxUserPic
-            // 
-            this.picBoxUserPic.Location = new System.Drawing.Point(3, 3);
-            this.picBoxUserPic.Name = "picBoxUserPic";
-            this.picBoxUserPic.Size = new System.Drawing.Size(46, 43);
-            this.picBoxUserPic.TabIndex = 0;
-            this.picBoxUserPic.TabStop = false;
             // 
             // lblUsername
             // 
@@ -60,6 +52,14 @@
             this.lblUserId.TabIndex = 2;
             this.lblUserId.Text = "Id";
             // 
+            // picBoxUserPic
+            // 
+            this.picBoxUserPic.Location = new System.Drawing.Point(3, 3);
+            this.picBoxUserPic.Name = "picBoxUserPic";
+            this.picBoxUserPic.Size = new System.Drawing.Size(46, 43);
+            this.picBoxUserPic.TabIndex = 0;
+            this.picBoxUserPic.TabStop = false;
+            // 
             // SmalProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -68,7 +68,7 @@
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.picBoxUserPic);
             this.Name = "SmalProfile";
-            this.Size = new System.Drawing.Size(194, 52);
+            this.Size = new System.Drawing.Size(257, 52);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

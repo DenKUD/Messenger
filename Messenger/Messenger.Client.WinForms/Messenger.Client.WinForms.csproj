@@ -101,6 +101,12 @@
     <Compile Include="Forms\PrpofileInfo.Designer.cs">
       <DependentUpon>PrpofileInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StartChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StartChatForm.Designer.cs">
+      <DependentUpon>StartChatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrpofileInfo.resx">
       <DependentUpon>PrpofileInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StartChatForm.resx">
+      <DependentUpon>StartChatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

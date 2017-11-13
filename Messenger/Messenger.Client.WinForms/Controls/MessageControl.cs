@@ -38,7 +38,6 @@ namespace Messenger.Client.WinForms.Controls
                     pictureBox1.Image = Properties.Resources.attach as Bitmap;
                     img = null;
                     _attachType = AttachType.Binary;
-    
                 }
             }
             else { _attachType = AttachType.None; }
