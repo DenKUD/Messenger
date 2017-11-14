@@ -155,7 +155,7 @@
             this.Controls.Add(this.picBoxUserPic);
             this.Controls.Add(this.lblUsername);
             this.Name = "ProfileInfo";
-            this.Text = "PrpofileInfo";
+            this.Text = "Регистрация";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.PrpofileInfo_DragDrop);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).EndInit();
             this.ResumeLayout(false);

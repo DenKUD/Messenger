@@ -88,6 +88,12 @@
     <Compile Include="Forms\AddContactForm.Designer.cs">
       <DependentUpon>AddContactForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FindMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FindMessageForm.Designer.cs">
+      <DependentUpon>FindMessageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddContactForm.resx">
       <DependentUpon>AddContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindMessageForm.resx">
+      <DependentUpon>FindMessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

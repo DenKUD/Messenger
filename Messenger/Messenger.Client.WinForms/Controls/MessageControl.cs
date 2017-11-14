@@ -18,6 +18,11 @@ namespace Messenger.Client.WinForms.Controls
         private Model.Message _message;
         private Image img;
         private AttachType _attachType;
+
+        public override string Text
+        {
+            get { return _message.Text; }
+        }
         public MessageControl(Model.Message message)
         {
             _message = message;

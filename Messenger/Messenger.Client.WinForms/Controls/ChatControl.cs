@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Messenger.Model;
+using Messenger.Client.WinForms.Forms;
 
 namespace Messenger.Client.WinForms.Controls
 {
@@ -18,6 +19,7 @@ namespace Messenger.Client.WinForms.Controls
         private User _user;
         //private System.Threading.Timer _timer;
         private byte[] _attach;
+        private bool _selfDestroy;
         //private bool _gotNewMessages;
         private int _howManyMessages;
 
@@ -31,6 +33,7 @@ namespace Messenger.Client.WinForms.Controls
             _attach = null;
             //_gotNewMessages = false;
             _howManyMessages = 0;
+            _selfDestroy = false;
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
         {
@@ -80,12 +83,13 @@ namespace Messenger.Client.WinForms.Controls
             List<Model.Message> newMessages = new List<Model.Message> { };
             foreach (Guid id in _serviceClient.GetChatMessegesIds(_chat.Id))
                 newMessages.Add(_serviceClient.GetMessage(id));
-            if (_messages.Count != newMessages.Count)
+            if (_messages.Count()!=newMessages.Count)
             {
                 _messages.Clear(); _messages.AddRange(newMessages); return true;
             }
             //_gotNewMessages = true;
             else return false;
+            
         }
 
         public void DisplayMessages()
@@ -108,16 +112,19 @@ namespace Messenger.Client.WinForms.Controls
             Chat chat = new Chat { };
             chat.Id = _chat.Id;
             var MessageToPost = new Model.Message
-            { Text = txtBoxPost.Text, Chat = chat, User=user,dtime=DateTime.Now,SelfDestroy=false,IsRead=false,Body=_attach };
+            { Text = txtBoxPost.Text, Chat = chat, User=user,dtime=DateTime.Now,SelfDestroy=_selfDestroy,IsRead=false,Body=_attach };
             _serviceClient.CreateMessage(MessageToPost);
             txtBoxPost.Text = "";
             _attach = null;
             pictureBoxAttach.Image = null;
+            lblSelfDestroy.Text = "";
         }
 
         private void timerGetMessages_Tick(object sender, EventArgs e)
         {
-            if (GetMessages()) { DisplayMessages(); }
+            if (GetMessages()) {
+                DisplayMessages();
+            }
         }
 
         public void Clear()
@@ -154,6 +161,27 @@ namespace Messenger.Client.WinForms.Controls
             {
                 pictureBoxAttach.Image = Properties.Resources.attach as Bitmap;
             }
+        }
+
+        private void сделатьСамоудаляющимсяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _selfDestroy = true;
+            lblSelfDestroy.Text = "Сообщение самоудалится после получения";
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtBoxSearch.Text != "")
+            {
+                string textToSearch = txtBoxSearch.Text;
+                List<Model.Message> foundMessages = new List<Model.Message> { };
+                foreach (Model.Message m in _messages)
+                {
+                    if (m.Text.Contains(textToSearch)) foundMessages.Add(m);
+                }
+                using (var form = new FindMessageForm(foundMessages)) form.ShowDialog();
+            }
+            else MessageBox.Show("Ничего не введено");
         }
     }
 }

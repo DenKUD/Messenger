@@ -33,12 +33,16 @@
             this.txtBoxPost = new System.Windows.Forms.TextBox();
             this.contexMenuStripAttach = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.прикрепитьВложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сделатьСамоудаляющимсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnPost = new System.Windows.Forms.Button();
             this.flowLayoutPanelChatMembers = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMessages = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
             this.timerRefreshMessages = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogSelectAttach = new System.Windows.Forms.OpenFileDialog();
+            this.lblSelfDestroy = new System.Windows.Forms.Label();
+            this.txtBoxSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.contexMenuStripAttach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
@@ -56,30 +60,38 @@
             // 
             this.txtBoxPost.AcceptsReturn = true;
             this.txtBoxPost.ContextMenuStrip = this.contexMenuStripAttach;
-            this.txtBoxPost.Location = new System.Drawing.Point(58, 303);
+            this.txtBoxPost.Location = new System.Drawing.Point(76, 303);
             this.txtBoxPost.Multiline = true;
             this.txtBoxPost.Name = "txtBoxPost";
-            this.txtBoxPost.Size = new System.Drawing.Size(323, 57);
+            this.txtBoxPost.Size = new System.Drawing.Size(305, 57);
             this.txtBoxPost.TabIndex = 2;
             // 
             // contexMenuStripAttach
             // 
             this.contexMenuStripAttach.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contexMenuStripAttach.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.прикрепитьВложениеToolStripMenuItem});
+            this.прикрепитьВложениеToolStripMenuItem,
+            this.сделатьСамоудаляющимсяToolStripMenuItem});
             this.contexMenuStripAttach.Name = "contexMenuStripAttach";
-            this.contexMenuStripAttach.Size = new System.Drawing.Size(238, 28);
+            this.contexMenuStripAttach.Size = new System.Drawing.Size(271, 52);
             // 
             // прикрепитьВложениеToolStripMenuItem
             // 
             this.прикрепитьВложениеToolStripMenuItem.Name = "прикрепитьВложениеToolStripMenuItem";
-            this.прикрепитьВложениеToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
+            this.прикрепитьВложениеToolStripMenuItem.Size = new System.Drawing.Size(270, 24);
             this.прикрепитьВложениеToolStripMenuItem.Text = "Прикрепить вложение";
             this.прикрепитьВложениеToolStripMenuItem.Click += new System.EventHandler(this.прикрепитьВложениеToolStripMenuItem_Click);
             // 
+            // сделатьСамоудаляющимсяToolStripMenuItem
+            // 
+            this.сделатьСамоудаляющимсяToolStripMenuItem.Name = "сделатьСамоудаляющимсяToolStripMenuItem";
+            this.сделатьСамоудаляющимсяToolStripMenuItem.Size = new System.Drawing.Size(270, 24);
+            this.сделатьСамоудаляющимсяToolStripMenuItem.Text = "Сделать самоудаляющимся";
+            this.сделатьСамоудаляющимсяToolStripMenuItem.Click += new System.EventHandler(this.сделатьСамоудаляющимсяToolStripMenuItem_Click);
+            // 
             // btnPost
             // 
-            this.btnPost.Location = new System.Drawing.Point(387, 303);
+            this.btnPost.Location = new System.Drawing.Point(464, 303);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(187, 57);
             this.btnPost.TabIndex = 3;
@@ -101,9 +113,9 @@
             this.flowLayoutPanelMessages.AutoScroll = true;
             this.flowLayoutPanelMessages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelMessages.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanelMessages.Location = new System.Drawing.Point(6, 20);
+            this.flowLayoutPanelMessages.Location = new System.Drawing.Point(6, 49);
             this.flowLayoutPanelMessages.Name = "flowLayoutPanelMessages";
-            this.flowLayoutPanelMessages.Size = new System.Drawing.Size(375, 277);
+            this.flowLayoutPanelMessages.Size = new System.Drawing.Size(375, 229);
             this.flowLayoutPanelMessages.TabIndex = 5;
             this.flowLayoutPanelMessages.WrapContents = false;
             // 
@@ -112,14 +124,14 @@
             this.pictureBoxAttach.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
             this.pictureBoxAttach.Location = new System.Drawing.Point(6, 303);
             this.pictureBoxAttach.Name = "pictureBoxAttach";
-            this.pictureBoxAttach.Size = new System.Drawing.Size(46, 57);
+            this.pictureBoxAttach.Size = new System.Drawing.Size(64, 57);
             this.pictureBoxAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAttach.TabIndex = 7;
             this.pictureBoxAttach.TabStop = false;
             // 
             // timerRefreshMessages
             // 
-            this.timerRefreshMessages.Interval = 4000;
+            this.timerRefreshMessages.Interval = 8000;
             this.timerRefreshMessages.Tick += new System.EventHandler(this.timerGetMessages_Tick);
             // 
             // openFileDialogSelectAttach
@@ -127,10 +139,40 @@
             this.openFileDialogSelectAttach.FileName = "openFileDialog1";
             this.openFileDialogSelectAttach.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSelectAttach_FileOk);
             // 
+            // lblSelfDestroy
+            // 
+            this.lblSelfDestroy.AutoSize = true;
+            this.lblSelfDestroy.Location = new System.Drawing.Point(3, 283);
+            this.lblSelfDestroy.Name = "lblSelfDestroy";
+            this.lblSelfDestroy.Size = new System.Drawing.Size(79, 17);
+            this.lblSelfDestroy.TabIndex = 8;
+            this.lblSelfDestroy.Text = "selfDestroy";
+            this.lblSelfDestroy.Visible = false;
+            // 
+            // txtBoxSearch
+            // 
+            this.txtBoxSearch.Location = new System.Drawing.Point(6, 20);
+            this.txtBoxSearch.Name = "txtBoxSearch";
+            this.txtBoxSearch.Size = new System.Drawing.Size(277, 22);
+            this.txtBoxSearch.TabIndex = 9;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(289, 20);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(92, 23);
+            this.btnSearch.TabIndex = 10;
+            this.btnSearch.Text = "Найти";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // ChatControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtBoxSearch);
+            this.Controls.Add(this.lblSelfDestroy);
             this.Controls.Add(this.pictureBoxAttach);
             this.Controls.Add(this.flowLayoutPanelMessages);
             this.Controls.Add(this.flowLayoutPanelChatMembers);
@@ -158,5 +200,9 @@
         private System.Windows.Forms.ContextMenuStrip contexMenuStripAttach;
         private System.Windows.Forms.ToolStripMenuItem прикрепитьВложениеToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialogSelectAttach;
+        private System.Windows.Forms.Label lblSelfDestroy;
+        private System.Windows.Forms.ToolStripMenuItem сделатьСамоудаляющимсяToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtBoxSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
