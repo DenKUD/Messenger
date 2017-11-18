@@ -97,13 +97,26 @@ namespace Messenger.Client.WinForms.Controls
             _messages.Sort((x, y) => DateTime.Compare(x.dtime, y.dtime));
             flowLayoutPanelMessages.SuspendLayout();
             flowLayoutPanelMessages.Controls.Clear();
+            Control currentControl;
+            /*
             foreach (Model.Message m in _messages)
             {
                 m.User=_chat.Members.FirstOrDefault(member=>member.Id==m.User.Id);
-                flowLayoutPanelMessages.Controls.Add(new MessageControl(m));
+                currentControl = new MessageControl(m);
+                flowLayoutPanelMessages.Controls.Add(currentControl);
+                flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
             }
-            flowLayoutPanelMessages.VerticalScroll.Value = flowLayoutPanelMessages.VerticalScroll.Maximum;
+            */
+            for(int i=0;i<_messages.Count -1;i++ )
+            {
+                flowLayoutPanelMessages.Controls.Add(new MessageControl(_messages[i]));
+     
+            }
+            currentControl = new MessageControl(_messages.Last());
+            flowLayoutPanelMessages.Controls.Add(currentControl);
             flowLayoutPanelMessages.ResumeLayout();
+            flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
+            
             //flowLayoutPanelMessages.Refresh();
         }
 

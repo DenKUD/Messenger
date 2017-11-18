@@ -102,7 +102,7 @@
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtBoxId);
             this.Controls.Add(this.txtBoxUserName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddContactForm";
             this.Text = "Найти пользователя";
             this.ResumeLayout(false);

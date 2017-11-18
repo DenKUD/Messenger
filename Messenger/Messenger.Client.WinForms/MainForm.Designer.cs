@@ -48,21 +48,26 @@
             this.выходИхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
             this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblChats = new System.Windows.Forms.Label();
             this.contextMenuStripChats.SuspendLayout();
             this.contextMenuStripContacts.SuspendLayout();
             this.toolStripMainForm.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstBoxChats
             // 
-            this.lstBoxChats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lstBoxChats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstBoxChats.ContextMenuStrip = this.contextMenuStripChats;
             this.lstBoxChats.FormattingEnabled = true;
             this.lstBoxChats.HorizontalScrollbar = true;
             this.lstBoxChats.ItemHeight = 16;
-            this.lstBoxChats.Location = new System.Drawing.Point(15, 290);
+            this.lstBoxChats.Location = new System.Drawing.Point(3, 269);
             this.lstBoxChats.Name = "lstBoxChats";
-            this.lstBoxChats.Size = new System.Drawing.Size(114, 132);
+            this.lstBoxChats.Size = new System.Drawing.Size(111, 116);
             this.lstBoxChats.TabIndex = 2;
             this.lstBoxChats.SelectedIndexChanged += new System.EventHandler(this.lstBoxChats_SelectedIndexChanged);
             this.lstBoxChats.DoubleClick += new System.EventHandler(this.lstBoxChats_DoubleClick);
@@ -92,13 +97,16 @@
             // 
             // lstboxContacts
             // 
+            this.lstboxContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstboxContacts.ContextMenuStrip = this.contextMenuStripContacts;
             this.lstboxContacts.FormattingEnabled = true;
             this.lstboxContacts.HorizontalScrollbar = true;
             this.lstboxContacts.ItemHeight = 16;
-            this.lstboxContacts.Location = new System.Drawing.Point(15, 80);
+            this.lstboxContacts.Location = new System.Drawing.Point(3, 44);
             this.lstboxContacts.Name = "lstboxContacts";
-            this.lstboxContacts.Size = new System.Drawing.Size(114, 132);
+            this.lstboxContacts.Size = new System.Drawing.Size(111, 116);
             this.lstboxContacts.TabIndex = 3;
             // 
             // contextMenuStripContacts
@@ -135,10 +143,11 @@
             // 
             // btnAddContact
             // 
-            this.btnAddContact.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAddContact.Location = new System.Drawing.Point(12, 218);
+            this.btnAddContact.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddContact.Location = new System.Drawing.Point(3, 168);
             this.btnAddContact.Name = "btnAddContact";
-            this.btnAddContact.Size = new System.Drawing.Size(114, 42);
+            this.btnAddContact.Size = new System.Drawing.Size(111, 54);
             this.btnAddContact.TabIndex = 4;
             this.btnAddContact.Text = "Добавить в контакты";
             this.btnAddContact.UseVisualStyleBackColor = true;
@@ -146,12 +155,16 @@
             // 
             // lblContacts
             // 
+            this.lblContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblContacts.AutoSize = true;
-            this.lblContacts.Location = new System.Drawing.Point(12, 60);
+            this.lblContacts.Location = new System.Drawing.Point(3, 0);
             this.lblContacts.Name = "lblContacts";
-            this.lblContacts.Size = new System.Drawing.Size(72, 17);
+            this.lblContacts.Size = new System.Drawing.Size(111, 41);
             this.lblContacts.TabIndex = 5;
             this.lblContacts.Text = "Контакты";
+            this.lblContacts.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // toolStripMainForm
             // 
@@ -213,19 +226,51 @@
             this.chatControl1.Enabled = false;
             this.chatControl1.Location = new System.Drawing.Point(135, 80);
             this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(670, 378);
+            this.chatControl1.Size = new System.Drawing.Size(670, 384);
             this.chatControl1.TabIndex = 0;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.lstboxContacts, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnAddContact, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lstBoxChats, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblChats, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblContacts, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 58);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(117, 393);
+            this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // lblChats
+            // 
+            this.lblChats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblChats.AutoSize = true;
+            this.lblChats.Location = new System.Drawing.Point(3, 225);
+            this.lblChats.Name = "lblChats";
+            this.lblChats.Size = new System.Drawing.Size(111, 41);
+            this.lblChats.TabIndex = 8;
+            this.lblChats.Text = "Чаты";
+            this.lblChats.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 460);
+            this.ClientSize = new System.Drawing.Size(817, 476);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStripMainForm);
-            this.Controls.Add(this.lblContacts);
-            this.Controls.Add(this.btnAddContact);
-            this.Controls.Add(this.lstboxContacts);
-            this.Controls.Add(this.lstBoxChats);
             this.Controls.Add(this.smalProfileUserProfile);
             this.Controls.Add(this.chatControl1);
             this.Name = "MainForm";
@@ -235,6 +280,8 @@
             this.contextMenuStripContacts.ResumeLayout(false);
             this.toolStripMainForm.ResumeLayout(false);
             this.toolStripMainForm.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,6 +307,8 @@
         private System.Windows.Forms.ToolStripMenuItem выйтиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходИхПрограммыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пригласитьВАктивныйЧатToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label lblChats;
     }
 }
 

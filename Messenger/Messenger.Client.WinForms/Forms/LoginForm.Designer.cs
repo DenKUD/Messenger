@@ -58,6 +58,8 @@
             // 
             // txtBoxPassword
             // 
+            this.txtBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxPassword.Location = new System.Drawing.Point(95, 77);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.Size = new System.Drawing.Size(280, 22);
@@ -75,6 +77,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(300, 131);
             this.btnCancel.Name = "btnCancel";
@@ -85,6 +88,7 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLogin.Location = new System.Drawing.Point(219, 131);
             this.btnLogin.Name = "btnLogin";
@@ -96,6 +100,8 @@
             // 
             // btnSingUp
             // 
+            this.btnSingUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSingUp.Location = new System.Drawing.Point(12, 131);
             this.btnSingUp.Name = "btnSingUp";
             this.btnSingUp.Size = new System.Drawing.Size(161, 30);
