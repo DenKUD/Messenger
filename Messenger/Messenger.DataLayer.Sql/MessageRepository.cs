@@ -140,8 +140,8 @@ namespace Messenger.DataLayer.Sql
                         gotMessage = new Message
                         {
                             Id = reader.GetGuid(reader.GetOrdinal("id")),
-                            User = _usersRepository.Get(reader.GetGuid(reader.GetOrdinal("User_id"))),
-                            Chat = _chatsRepository.Get(reader.GetGuid(reader.GetOrdinal("chat_id"))),
+                            User = new User { Id = reader.GetGuid(reader.GetOrdinal("User_id"))},
+                            Chat = new Chat { Id = reader.GetGuid(reader.GetOrdinal("chat_id"))},
                             dtime = reader.GetDateTime(reader.GetOrdinal("Datetime")),
                             Text= reader.GetString(reader.GetOrdinal("Text")),
                             SelfDestroy = reader.GetBoolean(reader.GetOrdinal("SelfDestructable")),

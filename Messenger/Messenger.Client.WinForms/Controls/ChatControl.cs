@@ -21,7 +21,7 @@ namespace Messenger.Client.WinForms.Controls
         private byte[] _attach;
         private bool _selfDestroy;
         //private bool _gotNewMessages;
-        private int _howManyMessages;
+        //private int _howManyMessages;
 
         public ChatControl()
         {
@@ -32,7 +32,7 @@ namespace Messenger.Client.WinForms.Controls
             _messages = new List<Model.Message> { };
             _attach = null;
             //_gotNewMessages = false;
-            _howManyMessages = 0;
+            //_howManyMessages = 0;
             _selfDestroy = false;
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
@@ -98,7 +98,10 @@ namespace Messenger.Client.WinForms.Controls
             flowLayoutPanelMessages.SuspendLayout();
             flowLayoutPanelMessages.Controls.Clear();
             foreach (Model.Message m in _messages)
+            {
+                m.User=_chat.Members.FirstOrDefault(member=>member.Id==m.User.Id);
                 flowLayoutPanelMessages.Controls.Add(new MessageControl(m));
+            }
             flowLayoutPanelMessages.VerticalScroll.Value = flowLayoutPanelMessages.VerticalScroll.Maximum;
             flowLayoutPanelMessages.ResumeLayout();
             //flowLayoutPanelMessages.Refresh();

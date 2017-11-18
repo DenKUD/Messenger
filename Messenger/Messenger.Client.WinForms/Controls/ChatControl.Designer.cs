@@ -91,9 +91,9 @@
             // 
             // btnPost
             // 
-            this.btnPost.Location = new System.Drawing.Point(464, 303);
+            this.btnPost.Location = new System.Drawing.Point(387, 303);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(187, 57);
+            this.btnPost.Size = new System.Drawing.Size(264, 57);
             this.btnPost.TabIndex = 3;
             this.btnPost.Text = "Отправить";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             // 
             // timerRefreshMessages
             // 
-            this.timerRefreshMessages.Interval = 8000;
+            this.timerRefreshMessages.Interval = 4000;
             this.timerRefreshMessages.Tick += new System.EventHandler(this.timerGetMessages_Tick);
             // 
             // openFileDialogSelectAttach
