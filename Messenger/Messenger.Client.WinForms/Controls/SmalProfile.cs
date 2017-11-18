@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Messenger.Model;
+using Messenger.Client.WinForms.Forms;
 
 namespace Messenger.Client.WinForms.Controls
 {
@@ -15,6 +16,7 @@ namespace Messenger.Client.WinForms.Controls
     {
         private Image _userPic;
         private string _userName;
+        private User _user;
         public SmalProfile(User user)
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Messenger.Client.WinForms.Controls
 
         public void Update(User user)
         {
+            _user = user;
             picBoxUserPic.SizeMode = PictureBoxSizeMode.StretchImage;
             if (!(user.Userpic.Length==0))
             {
@@ -54,6 +57,17 @@ namespace Messenger.Client.WinForms.Controls
             lblUsername.Text = "";
             lblUserId.Text = "";
         }
-       
+
+        private void SmalProfile_DoubleClick(object sender, EventArgs e)
+        {
+            using (var form = new Forms.ProfileInfo(_user))
+                form.ShowDialog();
+        }
+
+        private void SmalProfile_Click(object sender, EventArgs e)
+        {/*
+            using (var form = new Forms.ProfileInfo(_user))
+                form.ShowDialog();*/
+        }
     }
 }

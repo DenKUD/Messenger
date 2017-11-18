@@ -28,6 +28,31 @@ namespace Messenger.Client.WinForms.Forms
             InitializeComponent();
             this.AllowDrop = true;
         }
+
+        public ProfileInfo(User user)
+        {
+            InitializeComponent();
+            this.Text = "Информация о пользователе";
+            _serviceClient = null;
+            this.AllowDrop = false;
+            btnLoadUserpic.Visible = false;
+            btnOk.Visible = false;
+            txtBoxPassword.Visible = false;
+            txtBoxUsername.Text = user.Name;
+            txtBoxUsername.ReadOnly = true;
+            txtBoxBio.Text = user.Bio;
+            txtBoxBio.ReadOnly = true;
+            lblPassword.Visible = false;
+            
+            if (!(user.Userpic.Length == 0))
+            {
+                try
+                {
+                    this.picBoxUserPic.Image = (Bitmap)new ImageConverter().ConvertFrom(user.Userpic);
+                }
+                catch (ArgumentException ex) { }
+            }
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

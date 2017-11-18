@@ -60,20 +60,23 @@
             // 
             this.txtBoxPassword.Location = new System.Drawing.Point(95, 77);
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(257, 22);
+            this.txtBoxPassword.Size = new System.Drawing.Size(280, 22);
             this.txtBoxPassword.TabIndex = 3;
             // 
             // txtBoxId
             // 
+            this.txtBoxId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxId.Location = new System.Drawing.Point(95, 27);
             this.txtBoxId.Name = "txtBoxId";
-            this.txtBoxId.Size = new System.Drawing.Size(257, 22);
+            this.txtBoxId.Size = new System.Drawing.Size(280, 22);
             this.txtBoxId.TabIndex = 4;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(277, 131);
+            this.btnCancel.Location = new System.Drawing.Point(300, 131);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 5;
@@ -83,7 +86,7 @@
             // btnLogin
             // 
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnLogin.Location = new System.Drawing.Point(196, 131);
+            this.btnLogin.Location = new System.Drawing.Point(219, 131);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 30);
             this.btnLogin.TabIndex = 6;
@@ -103,11 +106,11 @@
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.btnSingUp;
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(382, 178);
+            this.ClientSize = new System.Drawing.Size(387, 178);
             this.Controls.Add(this.btnSingUp);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnCancel);
@@ -115,6 +118,7 @@
             this.Controls.Add(this.txtBoxPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.LblUserId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LoginForm";
             this.Text = "Войдите или зарегистрируйтесь";
             this.ResumeLayout(false);

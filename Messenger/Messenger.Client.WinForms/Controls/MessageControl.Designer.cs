@@ -61,6 +61,9 @@
             // 
             // txtBoxContents
             // 
+            this.txtBoxContents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxContents.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBoxContents.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtBoxContents.Location = new System.Drawing.Point(100, 20);
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
@@ -78,6 +81,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // contextMenuStripSaveImage
             // 
@@ -114,7 +118,7 @@
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUsername);
             this.Name = "MessageControl";
-            this.Size = new System.Drawing.Size(303, 150);
+            this.Size = new System.Drawing.Size(311, 140);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStripSaveImage.ResumeLayout(false);
             this.ResumeLayout(false);

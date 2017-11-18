@@ -119,8 +119,9 @@ namespace Messenger.Client.WinForms.Controls
             _serviceClient.CreateMessage(MessageToPost);
             txtBoxPost.Text = "";
             _attach = null;
-            pictureBoxAttach.Image = null;
-            lblSelfDestroy.Text = "";
+            _selfDestroy = false;
+            pictureBoxAttach.Image = Properties.Resources.attach as Bitmap;
+            radioButtonSelfDestroy.Checked = false;
         }
 
         private void timerGetMessages_Tick(object sender, EventArgs e)
@@ -169,7 +170,7 @@ namespace Messenger.Client.WinForms.Controls
         private void сделатьСамоудаляющимсяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _selfDestroy = true;
-            lblSelfDestroy.Text = "Сообщение самоудалится после получения";
+            radioButtonSelfDestroy.Checked = true;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -185,6 +186,22 @@ namespace Messenger.Client.WinForms.Controls
                 using (var form = new FindMessageForm(foundMessages)) form.ShowDialog();
             }
             else MessageBox.Show("Ничего не введено");
+        }
+
+        private void pictureBoxAttach_Click(object sender, EventArgs e)
+        {
+            openFileDialogSelectAttach.ShowDialog();
+        }
+
+        private void radioButtonSelfDestroy_CheckedChanged(object sender, EventArgs e)
+        {
+            _selfDestroy = radioButtonSelfDestroy.Checked;
+        }
+
+        private void txtBoxPost_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == (Char)Keys.Return) btnPost.PerformClick();
         }
     }
 }

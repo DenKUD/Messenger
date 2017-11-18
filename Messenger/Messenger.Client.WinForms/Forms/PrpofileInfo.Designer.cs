@@ -93,6 +93,8 @@
             // 
             // txtBoxBio
             // 
+            this.txtBoxBio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxBio.Location = new System.Drawing.Point(339, 91);
             this.txtBoxBio.Multiline = true;
             this.txtBoxBio.Name = "txtBoxBio";
@@ -154,6 +156,7 @@
             this.Controls.Add(this.txtBoxUsername);
             this.Controls.Add(this.picBoxUserPic);
             this.Controls.Add(this.lblUsername);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ProfileInfo";
             this.Text = "Регистрация";
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.PrpofileInfo_DragDrop);

@@ -55,14 +55,17 @@
             // 
             // lstBoxChats
             // 
+            this.lstBoxChats.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lstBoxChats.ContextMenuStrip = this.contextMenuStripChats;
             this.lstBoxChats.FormattingEnabled = true;
+            this.lstBoxChats.HorizontalScrollbar = true;
             this.lstBoxChats.ItemHeight = 16;
             this.lstBoxChats.Location = new System.Drawing.Point(15, 290);
             this.lstBoxChats.Name = "lstBoxChats";
-            this.lstBoxChats.Size = new System.Drawing.Size(87, 132);
+            this.lstBoxChats.Size = new System.Drawing.Size(114, 132);
             this.lstBoxChats.TabIndex = 2;
             this.lstBoxChats.SelectedIndexChanged += new System.EventHandler(this.lstBoxChats_SelectedIndexChanged);
+            this.lstBoxChats.DoubleClick += new System.EventHandler(this.lstBoxChats_DoubleClick);
             // 
             // contextMenuStripChats
             // 
@@ -91,10 +94,11 @@
             // 
             this.lstboxContacts.ContextMenuStrip = this.contextMenuStripContacts;
             this.lstboxContacts.FormattingEnabled = true;
+            this.lstboxContacts.HorizontalScrollbar = true;
             this.lstboxContacts.ItemHeight = 16;
             this.lstboxContacts.Location = new System.Drawing.Point(15, 80);
             this.lstboxContacts.Name = "lstboxContacts";
-            this.lstboxContacts.Size = new System.Drawing.Size(87, 132);
+            this.lstboxContacts.Size = new System.Drawing.Size(114, 132);
             this.lstboxContacts.TabIndex = 3;
             // 
             // contextMenuStripContacts
@@ -105,7 +109,7 @@
             this.toolStripMenuDeleteUser,
             this.пригласитьВАктивныйЧатToolStripMenuItem});
             this.contextMenuStripContacts.Name = "contextMenuStripContacts";
-            this.contextMenuStripContacts.Size = new System.Drawing.Size(269, 104);
+            this.contextMenuStripContacts.Size = new System.Drawing.Size(269, 76);
             // 
             // toolStripMenuItemCreateChat
             // 
@@ -131,9 +135,10 @@
             // 
             // btnAddContact
             // 
-            this.btnAddContact.Location = new System.Drawing.Point(15, 218);
+            this.btnAddContact.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAddContact.Location = new System.Drawing.Point(12, 218);
             this.btnAddContact.Name = "btnAddContact";
-            this.btnAddContact.Size = new System.Drawing.Size(87, 66);
+            this.btnAddContact.Size = new System.Drawing.Size(114, 42);
             this.btnAddContact.TabIndex = 4;
             this.btnAddContact.Text = "Добавить в контакты";
             this.btnAddContact.UseVisualStyleBackColor = true;
@@ -155,7 +160,7 @@
             this.toolStripDropDownButton1});
             this.toolStripMainForm.Location = new System.Drawing.Point(0, 0);
             this.toolStripMainForm.Name = "toolStripMainForm";
-            this.toolStripMainForm.Size = new System.Drawing.Size(794, 27);
+            this.toolStripMainForm.Size = new System.Drawing.Size(817, 27);
             this.toolStripMainForm.TabIndex = 6;
             this.toolStripMainForm.Text = "toolStrip1";
             // 
@@ -197,22 +202,25 @@
             // 
             this.smalProfileUserProfile.Location = new System.Drawing.Point(135, 28);
             this.smalProfileUserProfile.Name = "smalProfileUserProfile";
-            this.smalProfileUserProfile.Size = new System.Drawing.Size(194, 52);
+            this.smalProfileUserProfile.Size = new System.Drawing.Size(378, 52);
             this.smalProfileUserProfile.TabIndex = 1;
             // 
             // chatControl1
             // 
+            this.chatControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chatControl1.Enabled = false;
             this.chatControl1.Location = new System.Drawing.Point(135, 80);
             this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(660, 378);
+            this.chatControl1.Size = new System.Drawing.Size(670, 378);
             this.chatControl1.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 460);
+            this.ClientSize = new System.Drawing.Size(817, 460);
             this.Controls.Add(this.toolStripMainForm);
             this.Controls.Add(this.lblContacts);
             this.Controls.Add(this.btnAddContact);

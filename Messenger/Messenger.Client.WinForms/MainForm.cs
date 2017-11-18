@@ -180,15 +180,29 @@ namespace Messenger.Client.WinForms
 
         private void пригласитьВАктивныйЧатToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var newMemberId = _contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id;
-            _serviceClient.AddUserToChat(newMemberId, _activeChat.Id);
-            chatControl1.RefreshChat();
-            chatControl1.RefreshMembers();
+            try
+            {
+                var newMemberId = _contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id;
+                _serviceClient.AddUserToChat(newMemberId, _activeChat.Id);
+                chatControl1.RefreshChat();
+                chatControl1.RefreshMembers();
+            }
+            catch (NullReferenceException) { };
         }
 
         private void toolStripMenuDeleteUser_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void lstBoxChats_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                _activeChat = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single();
+                chatControl1.SetChat(_activeChat);
+            }
+            catch (NullReferenceException) { };
         }
     }
 }

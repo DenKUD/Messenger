@@ -40,9 +40,9 @@
             this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
             this.timerRefreshMessages = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogSelectAttach = new System.Windows.Forms.OpenFileDialog();
-            this.lblSelfDestroy = new System.Windows.Forms.Label();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.radioButtonSelfDestroy = new System.Windows.Forms.RadioButton();
             this.contexMenuStripAttach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
@@ -59,12 +59,15 @@
             // txtBoxPost
             // 
             this.txtBoxPost.AcceptsReturn = true;
+            this.txtBoxPost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxPost.ContextMenuStrip = this.contexMenuStripAttach;
             this.txtBoxPost.Location = new System.Drawing.Point(76, 303);
             this.txtBoxPost.Multiline = true;
             this.txtBoxPost.Name = "txtBoxPost";
             this.txtBoxPost.Size = new System.Drawing.Size(305, 57);
             this.txtBoxPost.TabIndex = 2;
+            this.txtBoxPost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxPost_KeyPress);
             // 
             // contexMenuStripAttach
             // 
@@ -91,6 +94,7 @@
             // 
             // btnPost
             // 
+            this.btnPost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPost.Location = new System.Drawing.Point(387, 303);
             this.btnPost.Name = "btnPost";
             this.btnPost.Size = new System.Drawing.Size(264, 57);
@@ -101,6 +105,8 @@
             // 
             // flowLayoutPanelChatMembers
             // 
+            this.flowLayoutPanelChatMembers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelChatMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelChatMembers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelChatMembers.Location = new System.Drawing.Point(387, 20);
@@ -110,24 +116,30 @@
             // 
             // flowLayoutPanelMessages
             // 
+            this.flowLayoutPanelMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelMessages.AutoScroll = true;
             this.flowLayoutPanelMessages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelMessages.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMessages.Location = new System.Drawing.Point(6, 49);
             this.flowLayoutPanelMessages.Name = "flowLayoutPanelMessages";
-            this.flowLayoutPanelMessages.Size = new System.Drawing.Size(375, 229);
+            this.flowLayoutPanelMessages.Size = new System.Drawing.Size(375, 221);
             this.flowLayoutPanelMessages.TabIndex = 5;
             this.flowLayoutPanelMessages.WrapContents = false;
             // 
             // pictureBoxAttach
             // 
+            this.pictureBoxAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBoxAttach.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
+            this.pictureBoxAttach.Image = global::Messenger.Client.WinForms.Properties.Resources.attach;
             this.pictureBoxAttach.Location = new System.Drawing.Point(6, 303);
             this.pictureBoxAttach.Name = "pictureBoxAttach";
             this.pictureBoxAttach.Size = new System.Drawing.Size(64, 57);
             this.pictureBoxAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAttach.TabIndex = 7;
             this.pictureBoxAttach.TabStop = false;
+            this.pictureBoxAttach.Click += new System.EventHandler(this.pictureBoxAttach_Click);
             // 
             // timerRefreshMessages
             // 
@@ -138,16 +150,6 @@
             // 
             this.openFileDialogSelectAttach.FileName = "openFileDialog1";
             this.openFileDialogSelectAttach.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogSelectAttach_FileOk);
-            // 
-            // lblSelfDestroy
-            // 
-            this.lblSelfDestroy.AutoSize = true;
-            this.lblSelfDestroy.Location = new System.Drawing.Point(3, 283);
-            this.lblSelfDestroy.Name = "lblSelfDestroy";
-            this.lblSelfDestroy.Size = new System.Drawing.Size(79, 17);
-            this.lblSelfDestroy.TabIndex = 8;
-            this.lblSelfDestroy.Text = "selfDestroy";
-            this.lblSelfDestroy.Visible = false;
             // 
             // txtBoxSearch
             // 
@@ -166,13 +168,26 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // radioButtonSelfDestroy
+            // 
+            this.radioButtonSelfDestroy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radioButtonSelfDestroy.AutoSize = true;
+            this.radioButtonSelfDestroy.Location = new System.Drawing.Point(6, 276);
+            this.radioButtonSelfDestroy.Name = "radioButtonSelfDestroy";
+            this.radioButtonSelfDestroy.Size = new System.Drawing.Size(236, 21);
+            this.radioButtonSelfDestroy.TabIndex = 11;
+            this.radioButtonSelfDestroy.TabStop = true;
+            this.radioButtonSelfDestroy.Text = "Сделать самоуничтожающимся";
+            this.radioButtonSelfDestroy.UseVisualStyleBackColor = true;
+            this.radioButtonSelfDestroy.CheckedChanged += new System.EventHandler(this.radioButtonSelfDestroy_CheckedChanged);
+            // 
             // ChatControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.radioButtonSelfDestroy);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtBoxSearch);
-            this.Controls.Add(this.lblSelfDestroy);
             this.Controls.Add(this.pictureBoxAttach);
             this.Controls.Add(this.flowLayoutPanelMessages);
             this.Controls.Add(this.flowLayoutPanelChatMembers);
@@ -200,9 +215,9 @@
         private System.Windows.Forms.ContextMenuStrip contexMenuStripAttach;
         private System.Windows.Forms.ToolStripMenuItem прикрепитьВложениеToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialogSelectAttach;
-        private System.Windows.Forms.Label lblSelfDestroy;
         private System.Windows.Forms.ToolStripMenuItem сделатьСамоудаляющимсяToolStripMenuItem;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.RadioButton radioButtonSelfDestroy;
     }
 }

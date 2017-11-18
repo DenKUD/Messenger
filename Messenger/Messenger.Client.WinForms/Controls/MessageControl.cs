@@ -66,5 +66,19 @@ namespace Messenger.Client.WinForms.Controls
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (_attachType != AttachType.None)
+            {
+                if (_attachType == AttachType.Image) saveattachDialog1.DefaultExt = "png";
+                else saveattachDialog1.DefaultExt = "";
+                if (saveattachDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    var path = saveattachDialog1.FileName;
+                    if (_attachType == AttachType.Image) {img.Save(path); }
+                    else { System.IO.File.WriteAllBytes(path, _message.Body); }
+                }
+            }
+        }
     }
 }

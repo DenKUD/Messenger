@@ -69,6 +69,8 @@
             this.Controls.Add(this.picBoxUserPic);
             this.Name = "SmalProfile";
             this.Size = new System.Drawing.Size(257, 52);
+            this.Click += new System.EventHandler(this.SmalProfile_Click);
+            this.DoubleClick += new System.EventHandler(this.SmalProfile_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxUserPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

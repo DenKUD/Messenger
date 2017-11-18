@@ -58,5 +58,7 @@ namespace Messenger.Client.WinForms.Forms
                 txtBoxPassword.Text = "";
             }
         }
+
+
     }
 }
