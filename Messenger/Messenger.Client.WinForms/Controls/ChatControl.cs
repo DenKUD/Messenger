@@ -17,11 +17,8 @@ namespace Messenger.Client.WinForms.Controls
         private List<Model.Message> _messages;
         private ServiceClient _serviceClient;
         private User _user;
-        //private System.Threading.Timer _timer;
         private byte[] _attach;
         private bool _selfDestroy;
-        //private bool _gotNewMessages;
-        //private int _howManyMessages;
 
         public ChatControl()
         {
@@ -31,8 +28,6 @@ namespace Messenger.Client.WinForms.Controls
             _serviceClient =new ServiceClient("http://localhost:56121/api/") ;
             _messages = new List<Model.Message> { };
             _attach = null;
-            //_gotNewMessages = false;
-            //_howManyMessages = 0;
             _selfDestroy = false;
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
@@ -54,7 +49,6 @@ namespace Messenger.Client.WinForms.Controls
             RefreshMembers();
             timerRefreshMessages.Start();
             Enabled = true;
-            //_timer = new System.Threading.Timer(new System.Threading.TimerCallback(GetMessages), null, 10, 10);
             lblChatName.Text = _chat.Name;
         }
 
@@ -83,46 +77,35 @@ namespace Messenger.Client.WinForms.Controls
             List<Model.Message> newMessages = new List<Model.Message> { };
             foreach (Guid id in _serviceClient.GetChatMessegesIds(_chat.Id))
                 newMessages.Add(_serviceClient.GetMessage(id));
-            if (_messages.Count()!=newMessages.Count)
+            newMessages.Sort((x, y) => DateTime.Compare(x.dtime, y.dtime));
+            if (!_messages.SequenceEqual(newMessages))
             {
                 _messages.Clear(); _messages.AddRange(newMessages); return true;
             }
-            //_gotNewMessages = true;
-            else return false;
-            
+            else return false;  
         }
 
         public void DisplayMessages()
         {
-            _messages.Sort((x, y) => DateTime.Compare(x.dtime, y.dtime));
             flowLayoutPanelMessages.SuspendLayout();
             flowLayoutPanelMessages.Controls.Clear();
             Control currentControl;
-            /*
-            foreach (Model.Message m in _messages)
+            for (int i = 0; i < _messages.Count-1 ; i++)
             {
-                m.User=_chat.Members.FirstOrDefault(member=>member.Id==m.User.Id);
-                currentControl = new MessageControl(m);
-                flowLayoutPanelMessages.Controls.Add(currentControl);
-                flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
-            }
-            */
-            for(int i=0;i<_messages.Count -1;i++ )
-            {
+                _messages[i].User = _chat.Members.FirstOrDefault(member => member.Id == _messages[i].User.Id);
+                if ((_messages[i].SelfDestroy == true) && (_messages[i].User.Id != _user.Id))
+                    _serviceClient.DeleteMessage(_messages[i].Id);
                 flowLayoutPanelMessages.Controls.Add(new MessageControl(_messages[i]));
-     
             }
+            _messages.LastOrDefault().User = _chat.Members.FirstOrDefault(member => member.Id == _messages.LastOrDefault().User.Id);
             currentControl = new MessageControl(_messages.Last());
             flowLayoutPanelMessages.Controls.Add(currentControl);
             flowLayoutPanelMessages.ResumeLayout();
             flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
-            
-            //flowLayoutPanelMessages.Refresh();
         }
 
         private void btnPost_Click(object sender, EventArgs e)
         {
-            
             User user = new User { };
             user.Id = _user.Id;
             Chat chat = new Chat { };
@@ -146,7 +129,6 @@ namespace Messenger.Client.WinForms.Controls
 
         public void Clear()
         {
-            //_timer.Dispose();
             timerRefreshMessages.Stop();
             _chat = null;
             _messages.Clear();
@@ -213,7 +195,6 @@ namespace Messenger.Client.WinForms.Controls
 
         private void txtBoxPost_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (e.KeyChar == (Char)Keys.Return) btnPost.PerformClick();
         }
     }

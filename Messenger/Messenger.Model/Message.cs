@@ -22,7 +22,8 @@ namespace Messenger.Model
             if (messageObj == null)
                 return false;
             else
-                return (Id.Equals(messageObj.Id)&&Text.Equals(messageObj.Text)&&Body.Equals(messageObj.Body));
+                return (Id.Equals(messageObj.Id));
+                //return (Id.Equals(messageObj.Id) && Text.Equals(messageObj.Text) && Body.Equals(messageObj.Body));
         }
     }
 }
