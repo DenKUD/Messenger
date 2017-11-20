@@ -23,7 +23,7 @@ namespace Messenger.Client.WinForms
         {
             _contacts = new List<Messenger.Model.User> ();
             _chats = new List<Messenger.Model.Chat>();
-            _activeChat = new Model.Chat { };
+            //_activeChat = new Model.Chat { };
             _serviceClient = new ServiceClient("http://localhost:56121/api/");
             InitializeComponent();
             chatControl1.SetServiceClient(_serviceClient);
@@ -71,36 +71,52 @@ namespace Messenger.Client.WinForms
         private void toolStripMenuItemCreateChat_Click(object sender, EventArgs e)
         {
             string ChatName;
-            using (var form = new StartChatForm())
+            if (lstboxContacts.SelectedItem != null)
             {
-                if (form.ShowDialog() == DialogResult.OK)
+                using (var form = new StartChatForm())
                 {
-                    ChatName = form.ChatName;
-                    List<Guid> members = new List<Guid>();
-                    members.Add(_user.Id);
-                    members.Add(_contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id);
-                    _chats.Add(_serviceClient.CreateChat(members, ChatName));
-                    lstBoxChats.Items.Clear();
-                    foreach (Model.Chat c in _chats)
-                        lstBoxChats.Items.Add(c.Name);
-                    lstBoxChats.Refresh();
-                    
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        ChatName = form.ChatName;
+                        List<Guid> members = new List<Guid>();
+                        members.Add(_user.Id);
+                        //members.Add(_contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id);
+                        members.Add(_contacts[lstboxContacts.SelectedIndex].Id);
+                        _chats.Add(_serviceClient.CreateChat(members, ChatName));
+                        lstBoxChats.Items.Clear();
+                        foreach (Model.Chat c in _chats)
+                            lstBoxChats.Items.Add(c.Name);
+                        lstBoxChats.Refresh();
+                    }
                 }
             }
+            else MessageBox.Show("Не выбран пользователь");
         }
 
         private void открытьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _activeChat = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single();
-            chatControl1.SetChat(_activeChat);
+            if (lstBoxChats.SelectedItem != null)
+            {
+                //_activeChat = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single();
+                _activeChat = _chats[lstBoxChats.SelectedIndex];
+                chatControl1.SetChat(_activeChat);
+            }
+            else MessageBox.Show("Не выбран чат");
         }
 
         private void покинутьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var chatId  = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single().Id;
-            _serviceClient.DeleteUserFromChat(chatId, _user.Id);
-            _chats.Clear();
-            _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
+            if (lstBoxChats.SelectedItem != null)
+            {
+                var chatId = _chats[lstBoxChats.SelectedIndex].Id;
+                _serviceClient.DeleteUserFromChat(chatId, _user.Id);
+                _chats.Clear();
+                _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
+                lstBoxChats.Items.Clear();
+                foreach (Model.Chat c in _chats)
+                    lstBoxChats.Items.Add(c.Name);
+            }
+            else MessageBox.Show("Не выбран чат");
         }
 
         private void lstBoxChats_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,6 +181,7 @@ namespace Messenger.Client.WinForms
         private void Logout()
         {
             _user = null;
+            _activeChat = null;
             _chats.Clear();
             lstBoxChats.Items.Clear();
             _contacts.Clear();
@@ -180,14 +197,18 @@ namespace Messenger.Client.WinForms
 
         private void пригласитьВАктивныйЧатToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            if (_activeChat != null)
             {
-                var newMemberId = _contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id;
-                _serviceClient.AddUserToChat(newMemberId, _activeChat.Id);
-                chatControl1.RefreshChat();
-                chatControl1.RefreshMembers();
+                if (lstboxContacts.SelectedItem != null)
+                {
+                    var newMemberId = _contacts[lstboxContacts.SelectedIndex].Id;
+                    _serviceClient.AddUserToChat(newMemberId, _activeChat.Id);
+                    chatControl1.RefreshChat();
+                    chatControl1.RefreshMembers();
+                }
+                else { MessageBox.Show("Пользователь не выбран"); }
             }
-            catch (NullReferenceException) { };
+            else { MessageBox.Show("Нет активного чата"); }
         }
 
         private void toolStripMenuDeleteUser_Click(object sender, EventArgs e)
@@ -199,7 +220,7 @@ namespace Messenger.Client.WinForms
         {
             try
             {
-                _activeChat = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single();
+                _activeChat = _chats[lstBoxChats.SelectedIndex];
                 chatControl1.SetChat(_activeChat);
             }
             catch (NullReferenceException) { };

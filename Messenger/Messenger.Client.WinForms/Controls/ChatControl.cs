@@ -141,7 +141,11 @@ namespace Messenger.Client.WinForms.Controls
 
         public void RefreshChat()
         {
-            _chat = _serviceClient.GetChat(_chat.Id);
+            try
+            {
+                _chat = _serviceClient.GetChat(_chat.Id);
+            }
+            catch (NullReferenceException) { MessageBox.Show("Нет активного чата"); }
         }
 
         private void прикрепитьВложениеToolStripMenuItem_Click(object sender, EventArgs e)

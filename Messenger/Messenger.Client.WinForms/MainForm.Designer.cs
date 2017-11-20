@@ -46,10 +46,10 @@
             this.войтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходИхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
-            this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblChats = new System.Windows.Forms.Label();
+            this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
+            this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
             this.contextMenuStripChats.SuspendLayout();
             this.contextMenuStripContacts.SuspendLayout();
             this.toolStripMainForm.SuspendLayout();
@@ -79,19 +79,19 @@
             this.открытьToolStripMenuItem,
             this.покинутьToolStripMenuItem});
             this.contextMenuStripChats.Name = "contextMenuStripChats";
-            this.contextMenuStripChats.Size = new System.Drawing.Size(145, 52);
+            this.contextMenuStripChats.Size = new System.Drawing.Size(176, 80);
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // покинутьToolStripMenuItem
             // 
             this.покинутьToolStripMenuItem.Name = "покинутьToolStripMenuItem";
-            this.покинутьToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
+            this.покинутьToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.покинутьToolStripMenuItem.Text = "Покинуть";
             this.покинутьToolStripMenuItem.Click += new System.EventHandler(this.покинутьToolStripMenuItem_Click);
             // 
@@ -211,24 +211,6 @@
             this.выходИхПрограммыToolStripMenuItem.Text = "Выход из программы";
             this.выходИхПрограммыToolStripMenuItem.Click += new System.EventHandler(this.выходИхПрограммыToolStripMenuItem_Click);
             // 
-            // smalProfileUserProfile
-            // 
-            this.smalProfileUserProfile.Location = new System.Drawing.Point(135, 28);
-            this.smalProfileUserProfile.Name = "smalProfileUserProfile";
-            this.smalProfileUserProfile.Size = new System.Drawing.Size(378, 52);
-            this.smalProfileUserProfile.TabIndex = 1;
-            // 
-            // chatControl1
-            // 
-            this.chatControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chatControl1.Enabled = false;
-            this.chatControl1.Location = new System.Drawing.Point(135, 80);
-            this.chatControl1.Name = "chatControl1";
-            this.chatControl1.Size = new System.Drawing.Size(670, 384);
-            this.chatControl1.TabIndex = 0;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -263,6 +245,24 @@
             this.lblChats.TabIndex = 8;
             this.lblChats.Text = "Чаты";
             this.lblChats.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // smalProfileUserProfile
+            // 
+            this.smalProfileUserProfile.Location = new System.Drawing.Point(135, 28);
+            this.smalProfileUserProfile.Name = "smalProfileUserProfile";
+            this.smalProfileUserProfile.Size = new System.Drawing.Size(378, 52);
+            this.smalProfileUserProfile.TabIndex = 1;
+            // 
+            // chatControl1
+            // 
+            this.chatControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chatControl1.Enabled = false;
+            this.chatControl1.Location = new System.Drawing.Point(135, 80);
+            this.chatControl1.Name = "chatControl1";
+            this.chatControl1.Size = new System.Drawing.Size(670, 384);
+            this.chatControl1.TabIndex = 0;
             // 
             // MainForm
             // 
