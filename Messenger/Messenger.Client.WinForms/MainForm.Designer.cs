@@ -34,11 +34,13 @@
             this.contextMenuStripChats = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.покинутьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.посмотретьПрофильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstboxContacts = new System.Windows.Forms.ListBox();
             this.contextMenuStripContacts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCreateChat = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuDeleteUser = new System.Windows.Forms.ToolStripMenuItem();
             this.пригласитьВАктивныйЧатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.посмотретьПрофильToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddContact = new System.Windows.Forms.Button();
             this.lblContacts = new System.Windows.Forms.Label();
             this.toolStripMainForm = new System.Windows.Forms.ToolStrip();
@@ -48,8 +50,6 @@
             this.выходИхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblChats = new System.Windows.Forms.Label();
-            this.посмотретьПрофильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.посмотретьПрофильToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
             this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
             this.contextMenuStripChats.SuspendLayout();
@@ -98,6 +98,13 @@
             this.покинутьToolStripMenuItem.Text = "Покинуть";
             this.покинутьToolStripMenuItem.Click += new System.EventHandler(this.покинутьToolStripMenuItem_Click);
             // 
+            // посмотретьПрофильToolStripMenuItem
+            // 
+            this.посмотретьПрофильToolStripMenuItem.Name = "посмотретьПрофильToolStripMenuItem";
+            this.посмотретьПрофильToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
+            this.посмотретьПрофильToolStripMenuItem.Text = "Посмотреть профиль";
+            this.посмотретьПрофильToolStripMenuItem.Click += new System.EventHandler(this.посмотретьПрофильToolStripMenuItem_Click);
+            // 
             // lstboxContacts
             // 
             this.lstboxContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -121,7 +128,7 @@
             this.пригласитьВАктивныйЧатToolStripMenuItem,
             this.посмотретьПрофильToolStripMenuItem1});
             this.contextMenuStripContacts.Name = "contextMenuStripContacts";
-            this.contextMenuStripContacts.Size = new System.Drawing.Size(269, 128);
+            this.contextMenuStripContacts.Size = new System.Drawing.Size(269, 100);
             // 
             // toolStripMenuItemCreateChat
             // 
@@ -143,6 +150,13 @@
             this.пригласитьВАктивныйЧатToolStripMenuItem.Size = new System.Drawing.Size(268, 24);
             this.пригласитьВАктивныйЧатToolStripMenuItem.Text = "Пригласить в активный чат";
             this.пригласитьВАктивныйЧатToolStripMenuItem.Click += new System.EventHandler(this.пригласитьВАктивныйЧатToolStripMenuItem_Click);
+            // 
+            // посмотретьПрофильToolStripMenuItem1
+            // 
+            this.посмотретьПрофильToolStripMenuItem1.Name = "посмотретьПрофильToolStripMenuItem1";
+            this.посмотретьПрофильToolStripMenuItem1.Size = new System.Drawing.Size(268, 24);
+            this.посмотретьПрофильToolStripMenuItem1.Text = "Посмотреть профиль";
+            this.посмотретьПрофильToolStripMenuItem1.Click += new System.EventHandler(this.посмотретьПрофильToolStripMenuItem_Click);
             // 
             // btnAddContact
             // 
@@ -248,20 +262,6 @@
             this.lblChats.TabIndex = 8;
             this.lblChats.Text = "Чаты";
             this.lblChats.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // посмотретьПрофильToolStripMenuItem
-            // 
-            this.посмотретьПрофильToolStripMenuItem.Name = "посмотретьПрофильToolStripMenuItem";
-            this.посмотретьПрофильToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
-            this.посмотретьПрофильToolStripMenuItem.Text = "Посмотреть профиль";
-            this.посмотретьПрофильToolStripMenuItem.Click += new System.EventHandler(this.посмотретьПрофильToolStripMenuItem_Click);
-            // 
-            // посмотретьПрофильToolStripMenuItem1
-            // 
-            this.посмотретьПрофильToolStripMenuItem1.Name = "посмотретьПрофильToolStripMenuItem1";
-            this.посмотретьПрофильToolStripMenuItem1.Size = new System.Drawing.Size(268, 24);
-            this.посмотретьПрофильToolStripMenuItem1.Text = "Посмотреть профиль";
-            this.посмотретьПрофильToolStripMenuItem1.Click += new System.EventHandler(this.посмотретьПрофильToolStripMenuItem_Click);
             // 
             // smalProfileUserProfile
             // 

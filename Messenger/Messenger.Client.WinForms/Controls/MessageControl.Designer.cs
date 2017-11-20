@@ -37,7 +37,6 @@
             this.сохранитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveattachDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStripSaveImage.SuspendLayout();
             this.SuspendLayout();
@@ -62,14 +61,16 @@
             // 
             // txtBoxContents
             // 
-            this.txtBoxContents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBoxContents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBoxContents.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBoxContents.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtBoxContents.Location = new System.Drawing.Point(100, 182);
+            this.txtBoxContents.Location = new System.Drawing.Point(100, 19);
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
             this.txtBoxContents.ReadOnly = true;
-            this.txtBoxContents.Size = new System.Drawing.Size(584, 111);
+            this.txtBoxContents.Size = new System.Drawing.Size(241, 111);
             this.txtBoxContents.TabIndex = 2;
             // 
             // pictureBox1
@@ -102,25 +103,12 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(0, 431);
+            this.btnDelete.Location = new System.Drawing.Point(0, 105);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 25);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Удалить";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(296, 135);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(396, 327);
-            this.tableLayoutPanel1.TabIndex = 6;
             // 
             // MessageControl
             // 
@@ -128,14 +116,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtBoxContents);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUsername);
             this.Name = "MessageControl";
-            this.Size = new System.Drawing.Size(695, 465);
+            this.Size = new System.Drawing.Size(352, 139);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStripSaveImage.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -153,6 +140,5 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripSaveImage;
         private System.Windows.Forms.ToolStripMenuItem сохранитьИзображениеToolStripMenuItem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
