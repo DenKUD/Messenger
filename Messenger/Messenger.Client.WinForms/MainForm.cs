@@ -23,7 +23,6 @@ namespace Messenger.Client.WinForms
         {
             _contacts = new List<Messenger.Model.User> ();
             _chats = new List<Messenger.Model.Chat>();
-            //_activeChat = new Model.Chat { };
             _serviceClient = new ServiceClient("http://localhost:56121/api/");
             InitializeComponent();
             chatControl1.SetServiceClient(_serviceClient);
@@ -80,7 +79,6 @@ namespace Messenger.Client.WinForms
                         ChatName = form.ChatName;
                         List<Guid> members = new List<Guid>();
                         members.Add(_user.Id);
-                        //members.Add(_contacts.Where(u => u.Name == lstboxContacts.SelectedItem.ToString()).Single().Id);
                         members.Add(_contacts[lstboxContacts.SelectedIndex].Id);
                         _chats.Add(_serviceClient.CreateChat(members, ChatName));
                         lstBoxChats.Items.Clear();
@@ -97,7 +95,6 @@ namespace Messenger.Client.WinForms
         {
             if (lstBoxChats.SelectedItem != null)
             {
-                //_activeChat = _chats.Where(u => u.Name == lstBoxChats.SelectedItem.ToString()).Single();
                 _activeChat = _chats[lstBoxChats.SelectedIndex];
                 chatControl1.SetChat(_activeChat);
             }
@@ -213,7 +210,12 @@ namespace Messenger.Client.WinForms
 
         private void toolStripMenuDeleteUser_Click(object sender, EventArgs e)
         {
-            
+            if (lstboxContacts.SelectedItem != null)
+            {
+                _contacts.Remove(_contacts[lstboxContacts.SelectedIndex]);
+                lstboxContacts.Items.RemoveAt(lstboxContacts.SelectedIndex);
+            }
+            else { MessageBox.Show("Пользователь не выбран"); }
         }
 
         private void lstBoxChats_DoubleClick(object sender, EventArgs e)
@@ -224,6 +226,18 @@ namespace Messenger.Client.WinForms
                 chatControl1.SetChat(_activeChat);
             }
             catch (NullReferenceException) { };
+        }
+
+        private void посмотретьПрофильToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstboxContacts.SelectedItem != null)
+            {
+                using (var form = new Forms.ProfileInfo(_contacts[lstboxContacts.SelectedIndex]))
+                {
+                    form.ShowDialog();
+                }
+            }
+            else MessageBox.Show("Пользователь не выбран");
         }
     }
 }

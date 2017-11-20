@@ -95,10 +95,13 @@ namespace Messenger.Client.WinForms.Controls
                 _messages[i].User = _chat.Members.FirstOrDefault(member => member.Id == _messages[i].User.Id);
                 if ((_messages[i].SelfDestroy == true) && (_messages[i].User.Id != _user.Id))
                     _serviceClient.DeleteMessage(_messages[i].Id);
-                flowLayoutPanelMessages.Controls.Add(new MessageControl(_messages[i]));
+                currentControl = new MessageControl(_messages[i]);
+                currentControl.Anchor= ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+                flowLayoutPanelMessages.Controls.Add(currentControl);
             }
             _messages.LastOrDefault().User = _chat.Members.FirstOrDefault(member => member.Id == _messages.LastOrDefault().User.Id);
             currentControl = new MessageControl(_messages.Last());
+            currentControl.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
             flowLayoutPanelMessages.Controls.Add(currentControl);
             flowLayoutPanelMessages.ResumeLayout();
             flowLayoutPanelMessages.ScrollControlIntoView(currentControl);

@@ -107,6 +107,7 @@
             // 
             this.flowLayoutPanelChatMembers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelChatMembers.AutoScroll = true;
             this.flowLayoutPanelChatMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelChatMembers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelChatMembers.Location = new System.Drawing.Point(387, 20);
