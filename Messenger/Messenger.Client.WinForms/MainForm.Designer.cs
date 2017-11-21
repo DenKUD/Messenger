@@ -34,7 +34,6 @@
             this.contextMenuStripChats = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.покинутьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.посмотретьПрофильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lstboxContacts = new System.Windows.Forms.ListBox();
             this.contextMenuStripContacts = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemCreateChat = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,31 +78,23 @@
             this.contextMenuStripChats.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripChats.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.открытьToolStripMenuItem,
-            this.покинутьToolStripMenuItem,
-            this.посмотретьПрофильToolStripMenuItem});
+            this.покинутьToolStripMenuItem});
             this.contextMenuStripChats.Name = "contextMenuStripChats";
-            this.contextMenuStripChats.Size = new System.Drawing.Size(229, 76);
+            this.contextMenuStripChats.Size = new System.Drawing.Size(176, 80);
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // покинутьToolStripMenuItem
             // 
             this.покинутьToolStripMenuItem.Name = "покинутьToolStripMenuItem";
-            this.покинутьToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
+            this.покинутьToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.покинутьToolStripMenuItem.Text = "Покинуть";
             this.покинутьToolStripMenuItem.Click += new System.EventHandler(this.покинутьToolStripMenuItem_Click);
-            // 
-            // посмотретьПрофильToolStripMenuItem
-            // 
-            this.посмотретьПрофильToolStripMenuItem.Name = "посмотретьПрофильToolStripMenuItem";
-            this.посмотретьПрофильToolStripMenuItem.Size = new System.Drawing.Size(228, 24);
-            this.посмотретьПрофильToolStripMenuItem.Text = "Посмотреть профиль";
-            this.посмотретьПрофильToolStripMenuItem.Click += new System.EventHandler(this.посмотретьПрофильToolStripMenuItem_Click);
             // 
             // lstboxContacts
             // 
@@ -216,6 +207,7 @@
             // 
             // выйтиToolStripMenuItem
             // 
+            this.выйтиToolStripMenuItem.Enabled = false;
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
             this.выйтиToolStripMenuItem.Text = "Выйти";
@@ -326,7 +318,6 @@
         private System.Windows.Forms.ToolStripMenuItem пригласитьВАктивныйЧатToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label lblChats;
-        private System.Windows.Forms.ToolStripMenuItem посмотретьПрофильToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem посмотретьПрофильToolStripMenuItem1;
     }
 }

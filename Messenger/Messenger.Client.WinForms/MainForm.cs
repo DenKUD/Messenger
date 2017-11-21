@@ -157,6 +157,8 @@ namespace Messenger.Client.WinForms
                             foreach (Model.User u in _contacts)
                                 lstboxContacts.Items.Add(u.Name);
                             lstboxContacts.Refresh();
+                            войтиToolStripMenuItem.Enabled = false;
+                            выйтиToolStripMenuItem.Enabled = true;
                         }
 
                         return true;
@@ -185,6 +187,8 @@ namespace Messenger.Client.WinForms
             lstboxContacts.Items.Clear();
             chatControl1.Clear();
             smalProfileUserProfile.Clear();
+            войтиToolStripMenuItem.Enabled = true;
+            выйтиToolStripMenuItem.Enabled = false;
         }
 
         private void войтиToolStripMenuItem_Click(object sender, EventArgs e)

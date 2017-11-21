@@ -48,11 +48,6 @@ namespace Messenger.Client.WinForms.Controls
             else { _attachType = AttachType.None; }
         }
 
-        public void SetDeleteButtonVisibility(bool isVisible)
-        {
-            btnDelete.Visible = isVisible;   
-        }
-
         private void сохранитьИзображениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_attachType != AttachType.None)
