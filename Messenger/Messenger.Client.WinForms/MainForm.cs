@@ -157,10 +157,10 @@ namespace Messenger.Client.WinForms
                             foreach (Model.User u in _contacts)
                                 lstboxContacts.Items.Add(u.Name);
                             lstboxContacts.Refresh();
-                            войтиToolStripMenuItem.Enabled = false;
-                            выйтиToolStripMenuItem.Enabled = true;
                         }
 
+                        войтиToolStripMenuItem.Enabled = false;
+                        выйтиToolStripMenuItem.Enabled = true;
                         return true;
                     }
                     else

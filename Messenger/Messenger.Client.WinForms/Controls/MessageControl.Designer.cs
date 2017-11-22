@@ -69,7 +69,7 @@
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
             this.txtBoxContents.ReadOnly = true;
-            this.txtBoxContents.Size = new System.Drawing.Size(237, 82);
+            this.txtBoxContents.Size = new System.Drawing.Size(237, 128);
             this.txtBoxContents.TabIndex = 2;
             // 
             // pictureBox1
@@ -99,6 +99,10 @@
             this.сохранитьИзображениеToolStripMenuItem.Text = "Сохранить изображение";
             this.сохранитьИзображениеToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИзображениеToolStripMenuItem_Click);
             // 
+            // saveattachDialog1
+            // 
+            
+            // 
             // MessageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -110,7 +114,7 @@
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUsername);
             this.Name = "MessageControl";
-            this.Size = new System.Drawing.Size(339, 104);
+            this.Size = new System.Drawing.Size(339, 150);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStripSaveImage.ResumeLayout(false);
             this.ResumeLayout(false);

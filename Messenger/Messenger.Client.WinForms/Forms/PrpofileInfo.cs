@@ -48,6 +48,7 @@ namespace Messenger.Client.WinForms.Forms
             {
                 try
                 {
+                    picBoxUserPic.SizeMode = PictureBoxSizeMode.StretchImage;
                     this.picBoxUserPic.Image = (Bitmap)new ImageConverter().ConvertFrom(user.Userpic);
                 }
                 catch (ArgumentException ex) { }

@@ -80,19 +80,19 @@
             this.открытьToolStripMenuItem,
             this.покинутьToolStripMenuItem});
             this.contextMenuStripChats.Name = "contextMenuStripChats";
-            this.contextMenuStripChats.Size = new System.Drawing.Size(176, 80);
+            this.contextMenuStripChats.Size = new System.Drawing.Size(145, 52);
             // 
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.открытьToolStripMenuItem.Text = "Открыть";
             this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
             // 
             // покинутьToolStripMenuItem
             // 
             this.покинутьToolStripMenuItem.Name = "покинутьToolStripMenuItem";
-            this.покинутьToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.покинутьToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.покинутьToolStripMenuItem.Text = "Покинуть";
             this.покинутьToolStripMenuItem.Click += new System.EventHandler(this.покинутьToolStripMenuItem_Click);
             // 
