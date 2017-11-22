@@ -97,6 +97,7 @@ namespace Messenger.Client.WinForms
             {
                 _activeChat = _chats[lstBoxChats.SelectedIndex];
                 chatControl1.SetChat(_activeChat);
+                tabPage2.Text = _activeChat.Name;
             }
             else MessageBox.Show("Не выбран чат");
         }
@@ -242,6 +243,26 @@ namespace Messenger.Client.WinForms
                 }
             }
             else MessageBox.Show("Пользователь не выбран");
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            toolStripMenuDeleteUser_Click(sender,e);
+        }
+
+        private void btnOpenChat_Click(object sender, EventArgs e)
+        {
+            открытьToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnLeaveChat_Click(object sender, EventArgs e)
+        {
+            покинутьToolStripMenuItem_Click(sender, e);
+        }
+
+        private void lstboxContacts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
