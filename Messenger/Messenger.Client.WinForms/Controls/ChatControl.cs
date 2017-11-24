@@ -19,6 +19,7 @@ namespace Messenger.Client.WinForms.Controls
         private User _user;
         private byte[] _attach;
         private bool _selfDestroy;
+        private List<Guid> _SelfDestroyMessages;
 
         public ChatControl()
         {
@@ -29,6 +30,7 @@ namespace Messenger.Client.WinForms.Controls
             _messages = new List<Model.Message> { };
             _attach = null;
             _selfDestroy = false;
+            _SelfDestroyMessages = new List<Guid>();
         }
         public ChatControl(Model.Chat cchat,ServiceClient serviceClient,User user)
         {
@@ -85,29 +87,33 @@ namespace Messenger.Client.WinForms.Controls
             }
             else return false;  
         }
+        public void DeleteSelfDestroyableMessage(object messageId)
+        {
+                _serviceClient.DeleteMessage(Guid.Parse(messageId.ToString()));
+        }
 
         public void DisplayMessages()
         {
             flowLayoutPanelMessages.SuspendLayout();
             flowLayoutPanelMessages.Controls.Clear();
             Control currentControl;
-            for (int i = 0; i < _messages.Count-1 ; i++)
+            foreach(Model.Message m in _messages)
             {
-                _messages[i].User = _chat.Members.FirstOrDefault(member => member.Id == _messages[i].User.Id);
-                if ((_messages[i].SelfDestroy == true) && (_messages[i].User.Id != _user.Id))
-                    _serviceClient.DeleteMessage(_messages[i].Id);
-                currentControl = new MessageControl(_messages[i]);
-                currentControl.Anchor= ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+                m.User = _chat.Members.FirstOrDefault(member => member.Id == m.User.Id);
+                if ((m.SelfDestroy == true) && (m.User.Id != _user.Id))
+                {
+                    _SelfDestroyMessages.Add(m.Id);
+                    if (!timer1.Enabled) timer1.Start(); 
+                }  
+                currentControl = new MessageControl(m);
+                currentControl.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
                 currentControl.Width = flowLayoutPanelMessages.Width - 50;
                 flowLayoutPanelMessages.Controls.Add(currentControl);
+                flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
             }
-            _messages.LastOrDefault().User = _chat.Members.FirstOrDefault(member => member.Id == _messages.LastOrDefault().User.Id);
-            currentControl = new MessageControl(_messages.Last());
-            currentControl.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
-            currentControl.Width = flowLayoutPanelMessages.Width - 50;
-            flowLayoutPanelMessages.Controls.Add(currentControl);
             flowLayoutPanelMessages.ResumeLayout();
-            flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
+            flowLayoutPanelMessages.ScrollControlIntoView(flowLayoutPanelMessages.Controls[flowLayoutPanelMessages.Controls.Count-1]);
+            
         }
 
         private void btnPost_Click(object sender, EventArgs e)
@@ -203,7 +209,6 @@ namespace Messenger.Client.WinForms.Controls
         private void txtBoxPost_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (Char)Keys.Return) { btnPost.PerformClick(); }
-             
         }
 
         private void chckBoxSelsfDestroy_CheckedChanged(object sender, EventArgs e)
@@ -217,8 +222,14 @@ namespace Messenger.Client.WinForms.Controls
                 c.Width = flowLayoutPanelMessages.Width - 50;
             flowLayoutPanelMessages.Update();
             flowLayoutPanelMessages.HorizontalScroll.Visible = false;
-            //flowLayoutPanelMessages.ClientSize.Width=10;
-            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            foreach(Guid m in _SelfDestroyMessages)
+                _serviceClient.DeleteMessage(m);
+            _SelfDestroyMessages.Clear();
+            timer1.Stop();
 
         }
     }

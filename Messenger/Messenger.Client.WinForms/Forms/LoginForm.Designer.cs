@@ -63,7 +63,7 @@
             this.txtBoxPassword.Location = new System.Drawing.Point(95, 77);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.Size = new System.Drawing.Size(280, 22);
-            this.txtBoxPassword.TabIndex = 3;
+            this.txtBoxPassword.TabIndex = 2;
             this.txtBoxPassword.UseSystemPasswordChar = true;
             // 
             // txtBoxId
@@ -74,7 +74,7 @@
             this.txtBoxId.Location = new System.Drawing.Point(95, 27);
             this.txtBoxId.Name = "txtBoxId";
             this.txtBoxId.Size = new System.Drawing.Size(280, 22);
-            this.txtBoxId.TabIndex = 4;
+            this.txtBoxId.TabIndex = 1;
             // 
             // btnCancel
             // 
@@ -94,7 +94,7 @@
             this.btnLogin.Location = new System.Drawing.Point(219, 131);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 30);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Войти";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);

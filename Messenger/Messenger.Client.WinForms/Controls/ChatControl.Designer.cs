@@ -43,6 +43,7 @@
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.chckBoxSelsfDestroy = new System.Windows.Forms.CheckBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contexMenuStripAttach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
@@ -182,6 +183,11 @@
             this.chckBoxSelsfDestroy.UseVisualStyleBackColor = true;
             this.chckBoxSelsfDestroy.CheckedChanged += new System.EventHandler(this.chckBoxSelsfDestroy_CheckedChanged);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 10000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // ChatControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -220,5 +226,6 @@
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckBox chckBoxSelsfDestroy;
+        private System.Windows.Forms.Timer timer1;
     }
 }
