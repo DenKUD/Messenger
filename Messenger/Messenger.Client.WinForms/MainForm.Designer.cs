@@ -45,29 +45,29 @@
             this.выходИхПрограммыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLeaveChat = new System.Windows.Forms.Button();
             this.btnOpenChat = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.lstBoxChats = new System.Windows.Forms.ListBox();
             this.btnAddContact = new System.Windows.Forms.Button();
-            this.lblChats = new System.Windows.Forms.Label();
-            this.lstboxContacts = new System.Windows.Forms.ListBox();
             this.lblContacts = new System.Windows.Forms.Label();
+            this.lstboxContacts = new System.Windows.Forms.ListBox();
+            this.lstBoxChats = new System.Windows.Forms.ListBox();
+            this.lblChats = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
             this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.contextMenuStripChats.SuspendLayout();
             this.contextMenuStripContacts.SuspendLayout();
             this.toolStripMainForm.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStripChats
@@ -202,6 +202,46 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Контакты";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lblContacts, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lstboxContacts, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lstBoxChats, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblChats, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(29, 19);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(741, 426);
+            this.tableLayoutPanel1.TabIndex = 12;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.btnLeaveChat, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnOpenChat, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(373, 379);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(365, 44);
+            this.tableLayoutPanel3.TabIndex = 13;
+            // 
             // btnLeaveChat
             // 
             this.btnLeaveChat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -228,6 +268,23 @@
             this.btnOpenChat.UseVisualStyleBackColor = true;
             this.btnOpenChat.Click += new System.EventHandler(this.btnOpenChat_Click);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnAddContact, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 379);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 44);
+            this.tableLayoutPanel2.TabIndex = 13;
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -240,6 +297,47 @@
             this.btnDelete.Text = "Удалить";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAddContact
+            // 
+            this.btnAddContact.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddContact.Location = new System.Drawing.Point(185, 3);
+            this.btnAddContact.Name = "btnAddContact";
+            this.btnAddContact.Size = new System.Drawing.Size(176, 38);
+            this.btnAddContact.TabIndex = 4;
+            this.btnAddContact.Text = "Добавить в контакты";
+            this.btnAddContact.UseVisualStyleBackColor = true;
+            this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
+            // 
+            // lblContacts
+            // 
+            this.lblContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblContacts.AutoSize = true;
+            this.lblContacts.Location = new System.Drawing.Point(3, 0);
+            this.lblContacts.Name = "lblContacts";
+            this.lblContacts.Size = new System.Drawing.Size(364, 50);
+            this.lblContacts.TabIndex = 5;
+            this.lblContacts.Text = "Контакты";
+            this.lblContacts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lstboxContacts
+            // 
+            this.lstboxContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstboxContacts.ContextMenuStrip = this.contextMenuStripContacts;
+            this.lstboxContacts.FormattingEnabled = true;
+            this.lstboxContacts.HorizontalScrollbar = true;
+            this.lstboxContacts.ItemHeight = 16;
+            this.lstboxContacts.Location = new System.Drawing.Point(3, 53);
+            this.lstboxContacts.Name = "lstboxContacts";
+            this.lstboxContacts.Size = new System.Drawing.Size(364, 308);
+            this.lstboxContacts.TabIndex = 3;
+            this.lstboxContacts.SelectedIndexChanged += new System.EventHandler(this.lstboxContacts_SelectedIndexChanged);
             // 
             // lstBoxChats
             // 
@@ -257,19 +355,6 @@
             this.lstBoxChats.SelectedIndexChanged += new System.EventHandler(this.lstBoxChats_SelectedIndexChanged);
             this.lstBoxChats.DoubleClick += new System.EventHandler(this.lstBoxChats_DoubleClick);
             // 
-            // btnAddContact
-            // 
-            this.btnAddContact.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddContact.Location = new System.Drawing.Point(185, 3);
-            this.btnAddContact.Name = "btnAddContact";
-            this.btnAddContact.Size = new System.Drawing.Size(176, 38);
-            this.btnAddContact.TabIndex = 4;
-            this.btnAddContact.Text = "Добавить в контакты";
-            this.btnAddContact.UseVisualStyleBackColor = true;
-            this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
-            // 
             // lblChats
             // 
             this.lblChats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -282,34 +367,6 @@
             this.lblChats.TabIndex = 8;
             this.lblChats.Text = "Чаты";
             this.lblChats.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lstboxContacts
-            // 
-            this.lstboxContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstboxContacts.ContextMenuStrip = this.contextMenuStripContacts;
-            this.lstboxContacts.FormattingEnabled = true;
-            this.lstboxContacts.HorizontalScrollbar = true;
-            this.lstboxContacts.ItemHeight = 16;
-            this.lstboxContacts.Location = new System.Drawing.Point(3, 53);
-            this.lstboxContacts.Name = "lstboxContacts";
-            this.lstboxContacts.Size = new System.Drawing.Size(364, 308);
-            this.lstboxContacts.TabIndex = 3;
-            this.lstboxContacts.SelectedIndexChanged += new System.EventHandler(this.lstboxContacts_SelectedIndexChanged);
-            // 
-            // lblContacts
-            // 
-            this.lblContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblContacts.AutoSize = true;
-            this.lblContacts.Location = new System.Drawing.Point(3, 0);
-            this.lblContacts.Name = "lblContacts";
-            this.lblContacts.Size = new System.Drawing.Size(364, 50);
-            this.lblContacts.TabIndex = 5;
-            this.lblContacts.Text = "Контакты";
-            this.lblContacts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabPage2
             // 
@@ -341,63 +398,6 @@
             this.smalProfileUserProfile.Size = new System.Drawing.Size(378, 52);
             this.smalProfileUserProfile.TabIndex = 1;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblContacts, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lstboxContacts, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lstBoxChats, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblChats, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(29, 19);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(741, 426);
-            this.tableLayoutPanel1.TabIndex = 12;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnAddContact, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 379);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(364, 44);
-            this.tableLayoutPanel2.TabIndex = 13;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.btnLeaveChat, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnOpenChat, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(373, 379);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(365, 44);
-            this.tableLayoutPanel3.TabIndex = 13;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -414,11 +414,11 @@
             this.toolStripMainForm.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

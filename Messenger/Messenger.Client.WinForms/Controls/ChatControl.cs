@@ -36,7 +36,8 @@ namespace Messenger.Client.WinForms.Controls
             _chat = cchat;
             _serviceClient = serviceClient;
             _user = user;
-            RefreshMembers();        
+            RefreshMembers();      
+            
         }
         public void AddMessage(Messenger.Model.Message message)
         {
@@ -97,11 +98,13 @@ namespace Messenger.Client.WinForms.Controls
                     _serviceClient.DeleteMessage(_messages[i].Id);
                 currentControl = new MessageControl(_messages[i]);
                 currentControl.Anchor= ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+                currentControl.Width = flowLayoutPanelMessages.Width - 50;
                 flowLayoutPanelMessages.Controls.Add(currentControl);
             }
             _messages.LastOrDefault().User = _chat.Members.FirstOrDefault(member => member.Id == _messages.LastOrDefault().User.Id);
             currentControl = new MessageControl(_messages.Last());
             currentControl.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right));
+            currentControl.Width = flowLayoutPanelMessages.Width - 50;
             flowLayoutPanelMessages.Controls.Add(currentControl);
             flowLayoutPanelMessages.ResumeLayout();
             flowLayoutPanelMessages.ScrollControlIntoView(currentControl);
@@ -120,7 +123,7 @@ namespace Messenger.Client.WinForms.Controls
             _attach = null;
             _selfDestroy = false;
             pictureBoxAttach.Image = Properties.Resources.attach as Bitmap;
-            radioButtonSelfDestroy.Checked = false;
+            chckBoxSelsfDestroy.Checked = false;
         }
 
         private void timerGetMessages_Tick(object sender, EventArgs e)
@@ -172,7 +175,7 @@ namespace Messenger.Client.WinForms.Controls
         private void сделатьСамоудаляющимсяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _selfDestroy = true;
-            radioButtonSelfDestroy.Checked = true;
+            chckBoxSelsfDestroy.Checked = true;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -195,14 +198,28 @@ namespace Messenger.Client.WinForms.Controls
             openFileDialogSelectAttach.ShowDialog();
         }
 
-        private void radioButtonSelfDestroy_CheckedChanged(object sender, EventArgs e)
-        {
-            _selfDestroy = radioButtonSelfDestroy.Checked;
-        }
+        
 
         private void txtBoxPost_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (Char)Keys.Return) btnPost.PerformClick();
+            if (e.KeyChar == (Char)Keys.Return) { btnPost.PerformClick(); }
+             
+        }
+
+        private void chckBoxSelsfDestroy_CheckedChanged(object sender, EventArgs e)
+        {
+            _selfDestroy = chckBoxSelsfDestroy.Checked;
+        }
+
+        private void flowLayoutPanelMessages_SizeChanged(object sender, EventArgs e)
+        {
+            foreach(Control c in flowLayoutPanelMessages.Controls)
+                c.Width = flowLayoutPanelMessages.Width - 50;
+            flowLayoutPanelMessages.Update();
+            flowLayoutPanelMessages.HorizontalScroll.Visible = false;
+            //flowLayoutPanelMessages.ClientSize.Width=10;
+            
+
         }
     }
 }

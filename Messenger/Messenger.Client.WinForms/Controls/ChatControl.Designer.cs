@@ -42,7 +42,7 @@
             this.openFileDialogSelectAttach = new System.Windows.Forms.OpenFileDialog();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.radioButtonSelfDestroy = new System.Windows.Forms.RadioButton();
+            this.chckBoxSelsfDestroy = new System.Windows.Forms.CheckBox();
             this.contexMenuStripAttach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
@@ -128,6 +128,7 @@
             this.flowLayoutPanelMessages.Size = new System.Drawing.Size(375, 221);
             this.flowLayoutPanelMessages.TabIndex = 5;
             this.flowLayoutPanelMessages.WrapContents = false;
+            this.flowLayoutPanelMessages.SizeChanged += new System.EventHandler(this.flowLayoutPanelMessages_SizeChanged);
             // 
             // pictureBoxAttach
             // 
@@ -169,24 +170,23 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // radioButtonSelfDestroy
+            // chckBoxSelsfDestroy
             // 
-            this.radioButtonSelfDestroy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButtonSelfDestroy.AutoSize = true;
-            this.radioButtonSelfDestroy.Location = new System.Drawing.Point(6, 276);
-            this.radioButtonSelfDestroy.Name = "radioButtonSelfDestroy";
-            this.radioButtonSelfDestroy.Size = new System.Drawing.Size(236, 21);
-            this.radioButtonSelfDestroy.TabIndex = 11;
-            this.radioButtonSelfDestroy.TabStop = true;
-            this.radioButtonSelfDestroy.Text = "Сделать самоуничтожающимся";
-            this.radioButtonSelfDestroy.UseVisualStyleBackColor = true;
-            this.radioButtonSelfDestroy.CheckedChanged += new System.EventHandler(this.radioButtonSelfDestroy_CheckedChanged);
+            this.chckBoxSelsfDestroy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chckBoxSelsfDestroy.AutoSize = true;
+            this.chckBoxSelsfDestroy.Location = new System.Drawing.Point(6, 276);
+            this.chckBoxSelsfDestroy.Name = "chckBoxSelsfDestroy";
+            this.chckBoxSelsfDestroy.Size = new System.Drawing.Size(213, 21);
+            this.chckBoxSelsfDestroy.TabIndex = 11;
+            this.chckBoxSelsfDestroy.Text = "Сделать самоудаляющимся";
+            this.chckBoxSelsfDestroy.UseVisualStyleBackColor = true;
+            this.chckBoxSelsfDestroy.CheckedChanged += new System.EventHandler(this.chckBoxSelsfDestroy_CheckedChanged);
             // 
             // ChatControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.radioButtonSelfDestroy);
+            this.Controls.Add(this.chckBoxSelsfDestroy);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.pictureBoxAttach);
@@ -219,6 +219,6 @@
         private System.Windows.Forms.ToolStripMenuItem сделатьСамоудаляющимсяToolStripMenuItem;
         private System.Windows.Forms.TextBox txtBoxSearch;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.RadioButton radioButtonSelfDestroy;
+        private System.Windows.Forms.CheckBox chckBoxSelsfDestroy;
     }
 }
