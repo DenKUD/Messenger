@@ -264,5 +264,10 @@ namespace Messenger.Client.WinForms
         {
 
         }
+
+        private void lstBoxChats_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            открытьToolStripMenuItem_Click(sender, e);
+        }
     }
 }

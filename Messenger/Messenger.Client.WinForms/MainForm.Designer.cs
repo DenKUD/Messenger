@@ -354,6 +354,7 @@
             this.lstBoxChats.TabIndex = 2;
             this.lstBoxChats.SelectedIndexChanged += new System.EventHandler(this.lstBoxChats_SelectedIndexChanged);
             this.lstBoxChats.DoubleClick += new System.EventHandler(this.lstBoxChats_DoubleClick);
+            this.lstBoxChats.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstBoxChats_MouseDoubleClick);
             // 
             // lblChats
             // 
