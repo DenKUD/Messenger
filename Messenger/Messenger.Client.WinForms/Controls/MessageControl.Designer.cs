@@ -69,7 +69,7 @@
             this.txtBoxContents.Multiline = true;
             this.txtBoxContents.Name = "txtBoxContents";
             this.txtBoxContents.ReadOnly = true;
-            this.txtBoxContents.Size = new System.Drawing.Size(237, 128);
+            this.txtBoxContents.Size = new System.Drawing.Size(237, 94);
             this.txtBoxContents.TabIndex = 2;
             // 
             // pictureBox1
@@ -78,7 +78,7 @@
             this.pictureBox1.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
             this.pictureBox1.Location = new System.Drawing.Point(0, 20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(93, 93);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -111,7 +111,7 @@
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUsername);
             this.Name = "MessageControl";
-            this.Size = new System.Drawing.Size(339, 150);
+            this.Size = new System.Drawing.Size(339, 120);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStripSaveImage.ResumeLayout(false);
             this.ResumeLayout(false);

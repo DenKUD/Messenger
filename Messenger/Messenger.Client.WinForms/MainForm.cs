@@ -30,9 +30,7 @@ namespace Messenger.Client.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            Login();
-           
+            Login();    
         }
 
         private void btnAddContact_Click(object sender, EventArgs e)
@@ -123,8 +121,7 @@ namespace Messenger.Client.WinForms
         }
 
         private void выходИхПрограммыToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        {  
             this.Close();
         }
 

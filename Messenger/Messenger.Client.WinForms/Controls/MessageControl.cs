@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Messenger.Model;
 using Messenger.Client.WinForms.Enums;
+using Messenger.Client.WinForms.Forms;
 
 
 namespace Messenger.Client.WinForms.Controls
@@ -65,17 +66,23 @@ namespace Messenger.Client.WinForms.Controls
         {
             if (_attachType != AttachType.None)
             {
-                if (_attachType == AttachType.Image) saveattachDialog1.DefaultExt = "png";
-                else saveattachDialog1.DefaultExt = "";
-                if (saveattachDialog1.ShowDialog() == DialogResult.OK)
+                if (_attachType == AttachType.Image)
                 {
-                    var path = saveattachDialog1.FileName;
-                    if (_attachType == AttachType.Image) {img.Save(path); }
-                    else { System.IO.File.WriteAllBytes(path, _message.Body); }
+                    using (var form = new ShowAttachForm(img))
+                    {
+                        form.ShowDialog();
+                    }
+                }
+                else
+                {
+                    if (saveattachDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        var path = saveattachDialog1.FileName;
+                        if (_attachType == AttachType.Image) { img.Save(path); }
+                        else { System.IO.File.WriteAllBytes(path, _message.Body); }
+                    }
                 }
             }
         }
-
-        
     }
 }
