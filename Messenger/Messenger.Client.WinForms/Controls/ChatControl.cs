@@ -70,7 +70,7 @@ namespace Messenger.Client.WinForms.Controls
             flowLayoutPanelChatMembers.Controls.Clear();
             foreach (User member in _chat.Members)
             {
-                flowLayoutPanelChatMembers.Controls.Add(new SmalProfile(member));
+                flowLayoutPanelChatMembers.Controls.Add(new SmallProfileControl(member));
             }
             flowLayoutPanelChatMembers.ResumeLayout();
         }

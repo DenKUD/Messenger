@@ -12,18 +12,18 @@ using Messenger.Client.WinForms.Forms;
 
 namespace Messenger.Client.WinForms.Controls
 {
-    public partial class SmalProfile : UserControl
+    public partial class SmallProfileControl : UserControl
     {
         private Image _userPic;
         private string _userName;
         private User _user;
-        public SmalProfile(User user)
+        public SmallProfileControl(User user)
         {
             InitializeComponent();
             Update(user);
         }
 
-        public SmalProfile()
+        public SmallProfileControl()
         {
             InitializeComponent();
             

@@ -58,7 +58,7 @@
             this.lblChats = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chatControl1 = new Messenger.Client.WinForms.Controls.ChatControl();
-            this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmalProfile();
+            this.smalProfileUserProfile = new Messenger.Client.WinForms.Controls.SmallProfileControl();
             this.contextMenuStripChats.SuspendLayout();
             this.contextMenuStripContacts.SuspendLayout();
             this.toolStripMainForm.SuspendLayout();
@@ -428,7 +428,7 @@
         #endregion
 
         private Controls.ChatControl chatControl1;
-        private Controls.SmalProfile smalProfileUserProfile;
+        private Controls.SmallProfileControl smalProfileUserProfile;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripContacts;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCreateChat;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuDeleteUser;

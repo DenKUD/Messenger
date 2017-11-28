@@ -75,11 +75,11 @@
     <Compile Include="Controls\MessageControl.Designer.cs">
       <DependentUpon>MessageControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SmalProfile.cs">
+    <Compile Include="Controls\SmallProfileControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SmalProfile.Designer.cs">
-      <DependentUpon>SmalProfile.cs</DependentUpon>
+    <Compile Include="Controls\SmallProfileControl.Designer.cs">
+      <DependentUpon>SmallProfileControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\AttachType.cs" />
     <Compile Include="Forms\AddContactForm.cs">
@@ -100,11 +100,11 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PrpofileInfo.cs">
+    <Compile Include="Forms\ProfileInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PrpofileInfo.Designer.cs">
-      <DependentUpon>PrpofileInfo.cs</DependentUpon>
+    <Compile Include="Forms\ProfileInfoForm.Designer.cs">
+      <DependentUpon>ProfileInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ShowAttachForm.cs">
       <SubType>Form</SubType>
@@ -133,8 +133,8 @@
     <EmbeddedResource Include="Controls\MessageControl.resx">
       <DependentUpon>MessageControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SmalProfile.resx">
-      <DependentUpon>SmalProfile.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SmallProfileControl.resx">
+      <DependentUpon>SmallProfileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddContactForm.resx">
       <DependentUpon>AddContactForm.cs</DependentUpon>
@@ -145,8 +145,8 @@
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrpofileInfo.resx">
-      <DependentUpon>PrpofileInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ProfileInfoForm.resx">
+      <DependentUpon>ProfileInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ShowAttachForm.resx">
       <DependentUpon>ShowAttachForm.cs</DependentUpon>

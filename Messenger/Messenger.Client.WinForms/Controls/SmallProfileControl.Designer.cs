@@ -1,6 +1,6 @@
 ﻿namespace Messenger.Client.WinForms.Controls
 {
-    partial class SmalProfile
+    partial class SmallProfileControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

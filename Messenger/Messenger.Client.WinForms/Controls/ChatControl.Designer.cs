@@ -37,13 +37,13 @@
             this.btnPost = new System.Windows.Forms.Button();
             this.flowLayoutPanelChatMembers = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanelMessages = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
             this.timerRefreshMessages = new System.Windows.Forms.Timer(this.components);
             this.openFileDialogSelectAttach = new System.Windows.Forms.OpenFileDialog();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.chckBoxSelsfDestroy = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
             this.contexMenuStripAttach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
@@ -131,19 +131,6 @@
             this.flowLayoutPanelMessages.WrapContents = false;
             this.flowLayoutPanelMessages.SizeChanged += new System.EventHandler(this.flowLayoutPanelMessages_SizeChanged);
             // 
-            // pictureBoxAttach
-            // 
-            this.pictureBoxAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBoxAttach.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
-            this.pictureBoxAttach.Image = global::Messenger.Client.WinForms.Properties.Resources.attach;
-            this.pictureBoxAttach.Location = new System.Drawing.Point(6, 303);
-            this.pictureBoxAttach.Name = "pictureBoxAttach";
-            this.pictureBoxAttach.Size = new System.Drawing.Size(64, 57);
-            this.pictureBoxAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxAttach.TabIndex = 7;
-            this.pictureBoxAttach.TabStop = false;
-            this.pictureBoxAttach.Click += new System.EventHandler(this.pictureBoxAttach_Click);
-            // 
             // timerRefreshMessages
             // 
             this.timerRefreshMessages.Interval = 4000;
@@ -187,6 +174,19 @@
             // 
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // pictureBoxAttach
+            // 
+            this.pictureBoxAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBoxAttach.ErrorImage = global::Messenger.Client.WinForms.Properties.Resources.attach;
+            this.pictureBoxAttach.Image = global::Messenger.Client.WinForms.Properties.Resources.attach;
+            this.pictureBoxAttach.Location = new System.Drawing.Point(6, 303);
+            this.pictureBoxAttach.Name = "pictureBoxAttach";
+            this.pictureBoxAttach.Size = new System.Drawing.Size(64, 57);
+            this.pictureBoxAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAttach.TabIndex = 7;
+            this.pictureBoxAttach.TabStop = false;
+            this.pictureBoxAttach.Click += new System.EventHandler(this.pictureBoxAttach_Click);
             // 
             // ChatControl
             // 

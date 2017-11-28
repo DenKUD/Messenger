@@ -127,7 +127,7 @@
             // 
             this.btnLoadUserpic.Location = new System.Drawing.Point(12, 196);
             this.btnLoadUserpic.Name = "btnLoadUserpic";
-            this.btnLoadUserpic.Size = new System.Drawing.Size(103, 45);
+            this.btnLoadUserpic.Size = new System.Drawing.Size(119, 45);
             this.btnLoadUserpic.TabIndex = 9;
             this.btnLoadUserpic.Text = "Загрузить изображение";
             this.btnLoadUserpic.UseVisualStyleBackColor = true;
