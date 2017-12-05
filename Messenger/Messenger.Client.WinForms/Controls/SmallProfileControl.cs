@@ -61,7 +61,10 @@ namespace Messenger.Client.WinForms.Controls
         private void SmalProfile_DoubleClick(object sender, EventArgs e)
         {
             using (var form = new Forms.ProfileInfo(_user))
+            {
+                form.StartPosition = FormStartPosition.CenterParent;
                 form.ShowDialog();
+            }
         }
 
         private void SmalProfile_Click(object sender, EventArgs e)

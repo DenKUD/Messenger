@@ -176,6 +176,7 @@ namespace Messenger.Client.WinForms.Controls
             {
                 pictureBoxAttach.Image = Properties.Resources.attach as Bitmap;
             }
+            удалитьВложениеToolStripMenuItem.Visible = true;
         }
 
         private void сделатьСамоудаляющимсяToolStripMenuItem_Click(object sender, EventArgs e)
@@ -231,6 +232,16 @@ namespace Messenger.Client.WinForms.Controls
             _SelfDestroyMessages.Clear();
             timer1.Stop();
 
+        }
+
+        private void удалитьВложениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_attach != null)
+            {
+                _attach = null;
+                pictureBoxAttach.Image = Properties.Resources.attach as Bitmap;
+            }
+            удалитьВложениеToolStripMenuItem.Visible = false;
         }
     }
 }

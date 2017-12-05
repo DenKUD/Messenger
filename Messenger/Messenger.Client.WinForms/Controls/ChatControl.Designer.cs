@@ -44,6 +44,7 @@
             this.chckBoxSelsfDestroy = new System.Windows.Forms.CheckBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBoxAttach = new System.Windows.Forms.PictureBox();
+            this.удалитьВложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contexMenuStripAttach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAttach)).BeginInit();
             this.SuspendLayout();
@@ -75,9 +76,10 @@
             this.contexMenuStripAttach.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contexMenuStripAttach.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.прикрепитьВложениеToolStripMenuItem,
-            this.сделатьСамоудаляющимсяToolStripMenuItem});
+            this.сделатьСамоудаляющимсяToolStripMenuItem,
+            this.удалитьВложениеToolStripMenuItem});
             this.contexMenuStripAttach.Name = "contexMenuStripAttach";
-            this.contexMenuStripAttach.Size = new System.Drawing.Size(271, 52);
+            this.contexMenuStripAttach.Size = new System.Drawing.Size(271, 104);
             // 
             // прикрепитьВложениеToolStripMenuItem
             // 
@@ -188,6 +190,14 @@
             this.pictureBoxAttach.TabStop = false;
             this.pictureBoxAttach.Click += new System.EventHandler(this.pictureBoxAttach_Click);
             // 
+            // удалитьВложениеToolStripMenuItem
+            // 
+            this.удалитьВложениеToolStripMenuItem.Name = "удалитьВложениеToolStripMenuItem";
+            this.удалитьВложениеToolStripMenuItem.Size = new System.Drawing.Size(270, 24);
+            this.удалитьВложениеToolStripMenuItem.Text = "Удалить вложение";
+            this.удалитьВложениеToolStripMenuItem.Visible = false;
+            this.удалитьВложениеToolStripMenuItem.Click += new System.EventHandler(this.удалитьВложениеToolStripMenuItem_Click);
+            // 
             // ChatControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -227,5 +237,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.CheckBox chckBoxSelsfDestroy;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВложениеToolStripMenuItem;
     }
 }

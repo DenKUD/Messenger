@@ -49,6 +49,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLeaveChat = new System.Windows.Forms.Button();
             this.btnOpenChat = new System.Windows.Forms.Button();
+            this.btnRefreshChats = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAddContact = new System.Windows.Forms.Button();
@@ -230,15 +231,17 @@
             this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel3.Controls.Add(this.btnLeaveChat, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnOpenChat, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnRefreshChats, 2, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(384, 379);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(375, 44);
             this.tableLayoutPanel3.TabIndex = 13;
             // 
@@ -249,7 +252,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLeaveChat.Location = new System.Drawing.Point(3, 3);
             this.btnLeaveChat.Name = "btnLeaveChat";
-            this.btnLeaveChat.Size = new System.Drawing.Size(181, 38);
+            this.btnLeaveChat.Size = new System.Drawing.Size(119, 38);
             this.btnLeaveChat.TabIndex = 11;
             this.btnLeaveChat.Text = "Покинуть";
             this.btnLeaveChat.UseVisualStyleBackColor = true;
@@ -260,13 +263,26 @@
             this.btnOpenChat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenChat.Location = new System.Drawing.Point(190, 3);
+            this.btnOpenChat.Location = new System.Drawing.Point(128, 3);
             this.btnOpenChat.Name = "btnOpenChat";
-            this.btnOpenChat.Size = new System.Drawing.Size(182, 38);
+            this.btnOpenChat.Size = new System.Drawing.Size(119, 38);
             this.btnOpenChat.TabIndex = 10;
             this.btnOpenChat.Text = "Открыть чат";
             this.btnOpenChat.UseVisualStyleBackColor = true;
             this.btnOpenChat.Click += new System.EventHandler(this.btnOpenChat_Click);
+            // 
+            // btnRefreshChats
+            // 
+            this.btnRefreshChats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefreshChats.Location = new System.Drawing.Point(253, 3);
+            this.btnRefreshChats.Name = "btnRefreshChats";
+            this.btnRefreshChats.Size = new System.Drawing.Size(119, 38);
+            this.btnRefreshChats.TabIndex = 12;
+            this.btnRefreshChats.Text = "Обновить";
+            this.btnRefreshChats.UseVisualStyleBackColor = true;
+            this.btnRefreshChats.Click += new System.EventHandler(this.btnRefreshChats_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -456,6 +472,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button btnRefreshChats;
     }
 }
 

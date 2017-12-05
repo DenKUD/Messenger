@@ -70,6 +70,7 @@ namespace Messenger.Client.WinForms.Controls
                 {
                     using (var form = new ShowAttachForm(img))
                     {
+                        form.StartPosition = FormStartPosition.CenterParent;
                         form.ShowDialog();
                     }
                 }

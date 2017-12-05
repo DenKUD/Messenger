@@ -54,7 +54,7 @@ namespace Messenger.Client.WinForms
                     }
                 }
             };
-
+            lstboxContacts.Items.Clear();
             foreach (Model.User u in _contacts)
                 lstboxContacts.Items.Add(u.Name);
             lstboxContacts.Refresh();
@@ -265,6 +265,15 @@ namespace Messenger.Client.WinForms
         private void lstBoxChats_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             открытьToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnRefreshChats_Click(object sender, EventArgs e)
+        {
+            _chats.Clear();
+            lstBoxChats.Items.Clear();
+            _chats.AddRange(_serviceClient.GetUserChats(_user.Id));
+            foreach (Model.Chat c in _chats)
+                lstBoxChats.Items.Add(c.Name);
         }
     }
 }
