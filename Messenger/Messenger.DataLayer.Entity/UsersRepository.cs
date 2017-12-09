@@ -33,6 +33,7 @@ namespace Messenger.DataLayer.Entity
             using (var db = new MessengerEntities())
             {
                 var userToDelete = db.Users.Find(id);
+                if (userToDelete == null) throw new ArgumentException($"Пользователь с id {id} не найден");
                 db.Users.Remove(userToDelete);
                 db.SaveChanges();
             }
@@ -42,11 +43,10 @@ namespace Messenger.DataLayer.Entity
         {
             using (var db = new MessengerEntities())
             {
-                var result =db.Users.Where(u => u.Username == name);
+                var result = db.Users.Where(u => u.Username == name);
                 foreach (Users users in result)
                     yield return users.Id;
             }
-
         }
 
         public User Get(Guid id)
@@ -55,6 +55,7 @@ namespace Messenger.DataLayer.Entity
             using (var db = new MessengerEntities())
             {
                 var result = db.Users.Find(id);
+                if (result == null) throw new ArgumentException($"Пользователь с id {id} не найден");
                 gotUser = new User
                 {
                     Id = result.Id,

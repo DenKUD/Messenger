@@ -23,10 +23,12 @@ namespace Messenger.DataLayer.Entity.Tests
                 Password = "WowWowPalehche",
                 Userpic = Encoding.UTF8.GetBytes("ava")
             };
+
             //act
             var db = new UsersRepository();
             var result =  db.Create(user);
             _tempUsers.Add(result.Id);
+
             //assert
             Assert.AreEqual(user.Name, result.Name);
             Assert.AreEqual(user.Userpic, result.Userpic);
@@ -45,11 +47,13 @@ namespace Messenger.DataLayer.Entity.Tests
                 Password = "WowWowPalehche",
                 Userpic = Encoding.UTF8.GetBytes("ava")
             };
+
             //act
             var db = new UsersRepository();
             user = db.Create(user);
-            _tempUsers.Add(user.Id);
+            _tempUsers.Add(user.Id); 
             var result = db.Get(user.Id);
+
             //assert
             Assert.AreEqual(user.Name, result.Name);
             CollectionAssert.AreEqual(user.Userpic, result.Userpic);
@@ -112,6 +116,7 @@ namespace Messenger.DataLayer.Entity.Tests
             };
             repository.Update(result.Id, newUser);
             var newResult = repository.Get(result.Id);
+
             //asserts
             Assert.AreEqual(newUser.Name, newResult.Name);
             CollectionAssert.AreEqual(newUser.Userpic, newResult.Userpic);
