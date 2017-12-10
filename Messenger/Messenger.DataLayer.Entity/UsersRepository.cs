@@ -12,7 +12,7 @@ namespace Messenger.DataLayer.Entity
         public User Create(User user)
         {
             user.Id = Guid.NewGuid();
-            using (var db = new MessengerEntities())
+            using (var db = new MessengerContext())
             {
                 db.Users.Add(new Users
                 {
@@ -30,7 +30,7 @@ namespace Messenger.DataLayer.Entity
 
         public void Delete(Guid id)
         {
-            using (var db = new MessengerEntities())
+            using (var db = new MessengerContext())
             {
                 var userToDelete = db.Users.Find(id);
                 if (userToDelete == null) throw new ArgumentException($"Пользователь с id {id} не найден");
@@ -41,7 +41,7 @@ namespace Messenger.DataLayer.Entity
 
         public IEnumerable<Guid> FindUserIdByName(string name)
         {
-            using (var db = new MessengerEntities())
+            using (var db = new MessengerContext())
             {
                 var result = db.Users.Where(u => u.Username == name);
                 foreach (Users users in result)
@@ -52,7 +52,7 @@ namespace Messenger.DataLayer.Entity
         public User Get(Guid id)
         {
             User gotUser;
-            using (var db = new MessengerEntities())
+            using (var db = new MessengerContext())
             {
                 var result = db.Users.Find(id);
                 if (result == null) throw new ArgumentException($"Пользователь с id {id} не найден");
@@ -68,11 +68,12 @@ namespace Messenger.DataLayer.Entity
             }
             return gotUser;
         }
+        
 
         public User Update(Guid id, User newUser)
         {
             newUser.Id = id;
-            using (var db = new MessengerEntities())
+            using (var db = new MessengerContext())
             {
                 var userToUpdate = db.Users.Find(id);
                 userToUpdate.Username = newUser.Name;

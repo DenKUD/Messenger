@@ -13,9 +13,9 @@ namespace Messenger.DataLayer.Entity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MessengerEntities : DbContext
+    public partial class MessengerContext : DbContext
     {
-        public MessengerEntities()
+        public MessengerContext()
             : base("name=MessengerEntities")
         {
         }
